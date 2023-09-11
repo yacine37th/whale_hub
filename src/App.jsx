@@ -6,6 +6,7 @@ import Home from './home/Home'
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import Login from './auth/Login'
+import Register from './auth/Register'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
       
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
        
       </Routes>
     </>
