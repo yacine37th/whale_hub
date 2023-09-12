@@ -1,0 +1,25 @@
+.background {
+    background-color: rgba(49, 99, 181, 0.8) ;
+}
+.button-background {
+    background-color: #4279d3;
+}
+.button-background-register {
+    background-color: #4279d3;
+}
+.button-background:hover {
+    background-color: #1f437e;
+}
+.text-size {
+    font-size: .7em;
+}
+.textReg {
+    font-size: 13px/23px 'sans-serif';
+}
+
+.registrationBack {
+    background-color: #282828;
+}
+.heh2{
+    height: 3.9rem;
+  }
