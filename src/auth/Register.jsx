@@ -5,6 +5,12 @@ import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import "./index.css";
 import { register } from "./function";
 import icon from "./img/icon-person.png";
+import emailpic from "./img/email.png";
+import passwordicon from "./img/password.png";
+import bitcoinicon from "./img/bitcoin.png";
+import baridimob from "./img/baridimob.png";
+
+
 import { Link } from "react-router-dom";
 
 function Register() {
@@ -94,10 +100,13 @@ function Register() {
       <div className="flex pt-20  justify-evenly max-w-screen ">
         <div className=" justify-between ">
           <div className="flex flex-col items-start justify-center border-white  ">
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
               {/* <span><img src={require("../assets/icon-person (2).png")} alt="" /></span> */}
+              <div className=" p-4 mr-1 h-full">
+                <img src={icon} alt="" className="w-4" />
+              </div>
               <input
-                className={` w-80 p-4 border-2 border-gray outline-none `}
+                className={` w-80 p-4 border-2   border-gray outline-none `}
                 type="text"
                 name="name"
                 id="name"
@@ -109,7 +118,10 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
+              <div className=" p-4 mr-1 h-full">
+                <img src={emailpic} alt="" className="w-4" />
+              </div>
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -125,7 +137,10 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
+            <div className=" p-4 mr-1 h-full">
+                <img src={icon} alt="" className="w-4" />
+              </div>
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -141,7 +156,11 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="relative mb-3">
+            
+            <div className="flex justify-center items-center mb-3">
+            <div className=" p-4 mr-1 h-full">
+                <img src={passwordicon} alt="" className="w-4" />
+              </div>
               <input
                 // {...register("password")}
                 // onChange={(e) => {
@@ -160,7 +179,10 @@ function Register() {
               />
             </div>
 
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
+            <div className=" p-4 mr-1 h-full">
+                <img src={bitcoinicon} alt="" className="w-4" />
+              </div>  
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -176,7 +198,10 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
+            <div className=" p-4 mr-1 h-full">
+                <img src={""} alt="" className="w-4" />
+              </div>  
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -192,7 +217,11 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="relative mb-3">
+            <div className="flex justify-center items-center mb-3">
+            <div className=" p-4 mr-1 h-full">
+                <img src={baridimob} alt="" className="w-4" />
+              </div>  
+              {/*  */}
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -223,7 +252,7 @@ function Register() {
               }
               type="submit"
               className="
-                  w-80 p-4 button-background-register border-white   text-white  text-base
+                  w-full p-4 button-background-register border-white   text-white  text-base
                   rounded-none  hover:border-white bg-blue-900
                   "
             >
@@ -231,10 +260,9 @@ function Register() {
             </button>
           </div>
         </div>
-              <div className=" border-2 mr-16 ml-16"></div>
+        <div className=" border-2 mr-44 ml-32"></div>
         <div className="   flex justify-center items-center flex-col">
           <img
-          
             src={icon}
             width={100}
             className=" mb-11"
@@ -242,14 +270,18 @@ function Register() {
             alt=""
           />{" "}
           <h4 className="font-bold">Already a member? </h4>
-              <p className="mb-14">Log In.</p>
-              {/* <button */}
-             
-              {/* type="submit" */}
-            
-            <Link to={"/login"} className=" hover:text-white  w-72 p-4 button-background-register    text-white  text-base
-                  rounded-none  hover:border-white bg-blue-900 focus:outline-none">  Login</Link>
-            {/* </button> */}
+          <p className="mb-14">Log In.</p>
+          {/* <button */}
+          {/* type="submit" */}
+          <Link
+            to={"/login"}
+            className=" hover:text-white  w-72 p-4 button-background-register    text-white  text-base
+                  rounded-none  hover:border-white bg-blue-900 focus:outline-none"
+          >
+            {" "}
+            Login
+          </Link>
+          {/* </button> */}
         </div>
       </div>
     </div>

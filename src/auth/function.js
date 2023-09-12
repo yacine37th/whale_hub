@@ -50,16 +50,23 @@ export const register = async (
         // Signed in
         const user = userCredential.user;
         console.log(user.uid);
-        db.collection("users").doc(`${user.uid}`).set({
-          userFullName: fullName,
-          userName: username,
-          userBitcoinAccount: betcoinAccount,
-          userUSDWallet: usdt,
-          userBaridyMob: Baridymob,
-          userEmail: em,
-          userPassword: pa,
-          userID: user.uid,
-        });
+        try {
+          setDoc(doc(db, "users", user.uid), {
+            userFullName: fullName,
+            userName: username,
+            userBitcoinAccount: betcoinAccount,
+            userUSDWallet: usdt,
+            userBaridyMob: Baridymob,
+            userEmail: em,
+            userPassword: pa,
+            userID: user.uid,
+          });
+          //      const docRef =  addDoc( user.uid, collection(db, "users"), {
+          //   email : email,
+          //   userid : auth.currentUser.uid
+          // });
+          // console.log("Document written with ID: ", docRef.id);
+        } catch (error) {}
         alert("Account has Been created");
         // ...
       })
@@ -67,6 +74,7 @@ export const register = async (
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
+        console.log(errorMessage);
         console.log(error.code);
         if (error.code === "auth/email-already-in-use") {
           alert("This Email is already in use");
