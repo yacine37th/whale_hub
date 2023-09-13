@@ -1,0 +1,20 @@
+.back{
+    /* background-image: url("./img/photo-1596436889106-be35e843f974.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center; */
+    background: url(./img/banner.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .button {
+    
+    transition: 0.5s ease-in-out;
+  }
+  .button:hover {
+  /* background-color:rgb(65, 57, 43) ; */
+  background-color: red;
+  }  
+
+  

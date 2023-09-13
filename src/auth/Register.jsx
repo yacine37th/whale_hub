@@ -9,9 +9,14 @@ import emailpic from "./img/email.png";
 import passwordicon from "./img/password.png";
 import bitcoinicon from "./img/bitcoin.png";
 import baridimob from "./img/baridimob.png";
+import logo from "./img/0_1_1694457176539.png";
+import facebook from "./img/facebook.png";
+import telegram from "./img/telegram.png";
 
+// 0_1_1694457176539.png
 
 import { Link } from "react-router-dom";
+import NavBarAuth from "./NavBarAuth";
 
 function Register() {
   const [fullName, setfullName] = useState("");
@@ -75,19 +80,9 @@ function Register() {
   // };
   return (
     <div>
-      <div className="background w-full h-14 absolute top-0 left-0 ">
-        <div>
-          {/* <img
-                src={icon}
-                width={100}
-                className=" sm:w-20 max-[600px]:w-16 "
-                // height={250}
-                alt=""
-              />     */}
-        </div>
-        <div></div>
-      </div>
-      <div className="flex justify-center flex-col items-center mt-9">
+    <NavBarAuth />
+
+      <div className="flex justify-center flex-col items-center mt-48">
         <div className=" flex justify-center flex-col items-center">
           <h3 className="text-gray-400">FREEDOM BEGINS WHERE WORK FINISHES</h3>
           <h2 className="text-4xl font-bold text-gray-600 mb-2 ">
@@ -138,7 +133,7 @@ function Register() {
             </div>
 
             <div className="flex justify-center items-center mb-3">
-            <div className=" p-4 mr-1 h-full">
+              <div className=" p-4 mr-1 h-full">
                 <img src={icon} alt="" className="w-4" />
               </div>
               <input
@@ -156,9 +151,8 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            
             <div className="flex justify-center items-center mb-3">
-            <div className=" p-4 mr-1 h-full">
+              <div className=" p-4 mr-1 h-full">
                 <img src={passwordicon} alt="" className="w-4" />
               </div>
               <input
@@ -180,9 +174,9 @@ function Register() {
             </div>
 
             <div className="flex justify-center items-center mb-3">
-            <div className=" p-4 mr-1 h-full">
+              <div className=" p-4 mr-1 h-full">
                 <img src={bitcoinicon} alt="" className="w-4" />
-              </div>  
+              </div>
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -199,9 +193,9 @@ function Register() {
             </div>
 
             <div className="flex justify-center items-center mb-3">
-            <div className=" p-4 mr-1 h-full">
+              <div className=" p-4 mr-1 h-full">
                 <img src={""} alt="" className="w-4" />
-              </div>  
+              </div>
               <input
                 className={`
                 w-80 p-4 text-black  border-2 border-gray outline-none 
@@ -218,9 +212,9 @@ function Register() {
             </div>
 
             <div className="flex justify-center items-center mb-3">
-            <div className=" p-4 mr-1 h-full">
+              <div className=" p-4 mr-1 h-full">
                 <img src={baridimob} alt="" className="w-4" />
-              </div>  
+              </div>
               {/*  */}
               <input
                 className={`

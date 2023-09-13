@@ -5,6 +5,8 @@ import { auth } from "../firebase/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { forgotPassword } from "./function";
+import NavBarAuth from "./NavBarAuth";
+
 
 
 function ForgotPassword() {
@@ -13,6 +15,8 @@ function ForgotPassword() {
 
   return (
     <>
+<NavBarAuth />
+
       <div className="bg-red-700 flex-1 ">
         <div className="flex justify-center items-center   ">
           <div

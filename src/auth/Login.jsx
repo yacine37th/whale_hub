@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import { auth } from "../firebase/firebase";
 import { signIN } from "./function";
+import facebook from "./img/facebook.png";
+import telegram from "./img/telegram.png"; 
+import logo from "./img/0_1_1694457176539.png";
+import NavBarAuth from "./NavBarAuth";
 
 function Login() {
   const [email, setemail] = useState("");
@@ -11,10 +15,10 @@ function Login() {
   return (
     <>
       <div>
-        <div className="background w-full h-14 absolute top-0 left-0">
-          <div></div>
-          <div></div>
-        </div>
+   <NavBarAuth />
+
+
+  
 
         <div className="bg-red-700 flex-1 ">
           <div className="flex justify-center items-center   ">
