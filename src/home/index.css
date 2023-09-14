@@ -4,6 +4,7 @@
     height: 100vh;
     background-repeat: no-repeat;
     background-position: center; */
+    /* padding-top: ; */
     background: url(./img/banner.jpg) no-repeat center center fixed;
     background-size: cover;
   }

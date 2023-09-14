@@ -38,7 +38,7 @@ function HomeNavBar() {
         <Link to={"/login"} className="text-white hover:text-white ">
           <button
             className="flex items-center background justify-between p-3 bg-transparent outline-none
-   focus:outline-none border-none header-button rounded-none button
+   focus:outline-none border-none header-button rounded-none 
    "
           >
             LOGIN
