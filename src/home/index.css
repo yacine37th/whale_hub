@@ -18,4 +18,77 @@
   background-color: red;
   }  
 
-  
+.bg {
+  background: url(./img/tie-icon.png) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.icon {
+  position: relative;
+  border-radius: 100%;
+  /* border-color: black; */
+
+  transition-duration: 1500ms;
+
+}  
+
+.icon:hover {
+  transform: rotate(360deg);
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  background-color: blue;
+  top: 50%;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  /* transform: rotate(180deg);
+   */
+   transition-duration: 700ms;
+}
+.icon::before:hover {
+  transform: rotate(180deg);
+
+}
+
+
+
+
+
+
+
+
+
+.icon-right {
+  position: relative;
+  border-radius: 100%;
+  /* border-color: black;
+  border-width: 2px; */
+  transition-duration: 1500ms;
+
+}  
+
+.icon-right:hover {
+  transform: rotate(360deg);
+}
+
+.icon-right::before {
+  content: "";
+  position: absolute;
+  background-color: blue;
+  top: 50%;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  /* transform: rotate(180deg);
+   */
+   transition-duration: 700ms;
+}
+.icon-right::before:hover {
+  transform: rotate(180deg);
+
+}
