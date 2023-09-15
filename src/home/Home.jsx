@@ -932,8 +932,42 @@ hover:border-white"
           </ul>
         </div>
 
+{/* ////////////////////Affiliation program */}
 
 
+<div className="back5 mt-28 w-full text-white">
+  <div className="w-ful ">
+          <div
+            className="flex justify-center flex-col items-center mt-32
+        max-[600px]:mt-52
+        "
+          >
+            <div className=" flex justify-center flex-col items-center">
+              <h3 className="text-white italic    max-[600px]:text-xs ">
+              BUY THE STOCK QUICKLY, AND SELL HIGH!
+              </h3>
+              <h2 className="text-4xl font-bold text-white mb-2      max-[600px]:text-xl">
+              AFFILIATE PROGRAM
+              </h2>
+            </div>
+            <div className="border-b-4 w-36 text-center justify-center flex items-center text-gray-700"></div>
+          </div>
+        </div>
+
+
+        <div className="px-32 text-lg  mt-14 max-[600px]:px-4  max-[600px]:text-center
+        max-[600px]:text-sm
+        ">
+          <p>The affiliate program of WAHLE HUB DZ gives everyone an easy and convenient way to make profit by attracting new members.
+<p>If you are an active user of the Internet, know how to write interesting articles or reviews, you have your own website, blog, forum and other resources and ways to attract new users (both online and offline) in the investment company WAHLE HUB DZ, and you wish to receive income from building your own network of partners, so this project is for you!</p>
+</p>
+<p>Each participant of the investment company WAHLE HUB DZ can attract new users to the site of the project and receive 8% of the deposit of new member! The model of the affiliate program involves making a profit in the second.</p>
+<p>If your referral makes a deposit on any of the represented plans, you get referral bonuses instantly to your bonus account, then you can withdraw funds to your personal e-wallet in the relevant payment system as fast as you wish.</p>
+<p className="text-5xl font-bold 
+max-[600px]:text-2xl mt-8  mb-20
+">REWARD 5%</p>
+        </div>
+</div>
 
 
 

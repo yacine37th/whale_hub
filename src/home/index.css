@@ -26,6 +26,11 @@ background-size: contain;
     background-size: cover;
   }
 
+  .back5 {
+    background: url(./img/banner4.jpg) no-repeat center center ;
+    background-size: cover;
+  }
+
   .button {
     
     transition: 0.5s ease-in-out;
