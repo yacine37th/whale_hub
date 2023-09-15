@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 
 export default function NavBarAuth() {
   return (
-    <div className="background  absolute top-0 left-0  px-44 flex justify-between items-center w-full">
+    <div className="background  absolute top-0 left-0  px-44 flex justify-between items-center w-full
+    max-[600px]:p-5
+    ">
       <div className="">
-        <Link to={"/login"}>
+        <Link to={"/"}>
           <img
             src={logo}
             width={50}
@@ -18,10 +20,12 @@ export default function NavBarAuth() {
           />
         </Link>
       </div>
-      <div className=" flex ">
+      <div className="flex
+   
+      ">
         <button
           className="flex items-center background justify-between p-4 bg-transparent outline-none
-     focus:outline-none border-none header-button rounded-none
+     focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
      "
         >
           <img src={telegram} className="mr-2" width={20} alt="" />{" "}
@@ -29,7 +33,7 @@ export default function NavBarAuth() {
         </button>
         <button
           className="flex items-center background justify-between p-4 bg-transparent outline-none
-     focus:outline-none border-none header-button rounded-none
+     focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
      "
         >
           <img src={facebook} className="mr-2" width={20} alt="" />{" "}
