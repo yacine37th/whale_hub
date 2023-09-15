@@ -38,35 +38,44 @@ function Home() {
       behavior: "smooth",
     });
   };
-  
-const q = query(collection(db, "users"));
-const [data, setdata] = useState([]);
-const userArray = [];
-const getdata = async ()=>{
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log( doc.data());
-    if(userArray.indexOf(doc.data()) === -1) {
-      userArray.push(doc.data());
-      console.log(userArray);
-  }
-    // userArray.push(doc.data())
 
-  });
-  setdata(userArray);
- console.log('====================================');
- console.log(userArray);
- console.log(userArray.length);
- console.log('====================================');
-}
-
+  const q = query(collection(db, "users"));
+  const [data, setdata] = useState([]);
+  const [date, setdate] = useState("");
+  const userArray = [];
+  const getdata = async () => {
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.data());
+      if (userArray.indexOf(doc.data()) === -1) {
+        userArray.push(doc.data());
+        console.log(userArray);
+      }
+      // userArray.push(doc.data())
+    });
+    setdata(userArray);
+    console.log("====================================");
+    console.log(userArray);
+    console.log(userArray.length);
+    console.log("====================================");
+  };
 
   useEffect(() => {
     if (window.screen.width <= "600") {
       width = true;
     }
     getdata();
+
+    let today = new Date().toISOString().slice(0, 10);
+
+    const startDate = "2023-09-12";
+    const endDate = today;
+
+    const diffInMs = new Date(endDate) - new Date(startDate);
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    setdate(diffInDays);
+
   }, [userArray]);
 
   const slides = [
@@ -788,25 +797,44 @@ hover:border-white"
             </div>
             <div className="border-b-4 w-36 text-center justify-center flex items-center text-gray-600"></div>
           </div>
-
         </div>
 
-        <div className="flex w-full justify-evenly mt-8">
-            <div>
-              <p className="w-44 border-b text-5xl text-blue-900 border-gray-300 p-2
-              max-[600px]:text-2xl max-[600px]:w-24
-              ">256</p>
-              <p className="font-bold p-2
+        <div
+          className="flex w-full justify-evenly mt-8
+        max-[600px]:flex-col   max-[600px]:justify-center  max-[600px]:items-center 
+        "
+        >
+          <div
+            className="max-[600px]:flex max-[600px]:flex-col  max-[600px]:justify-center  max-[600px]:items-center 
+            max-[600px]:mb-8         max-[600px]:mt-8
+            "
+          >
+            <p
+              className="w-44 border-b text-5xl text-blue-900 border-gray-300 p-2
+              max-[600px]:text-2xl max-[600px]:w-24   
+              "
+            >
+              {date}
+            </p>
+            <p
+              className="font-bold p-2
               max-[600px]:text-lg
-              ">DAYS ON-LINE</p>
-            </div>
-            <div>
-            <p  className="w-44 border-b text-5xl text-blue-900 border-gray-300 p-2
-         max-[600px]:text-2xl max-[600px]:w-24
-            ">{data?.length}</p>
-              <p className="font-bold p-2">INVESTORS</p>
-            </div>
+              "
+            >
+              DAYS ON-LINE
+            </p>
           </div>
+          <div>
+            <p
+              className="w-44 border-b text-5xl text-blue-900 border-gray-300 p-2
+         max-[600px]:text-2xl max-[600px]:w-24
+            "
+            >
+              {data?.length}
+            </p>
+            <p className="font-bold p-2">INVESTORS</p>
+          </div>
+        </div>
 
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
       </div>
