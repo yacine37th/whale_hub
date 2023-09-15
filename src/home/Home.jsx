@@ -22,10 +22,11 @@ import arrow2 from "./img/arrow2.png";
 import arrow1 from "./img/arrow1.png";
 import icon13 from "./img/icon13.png";
 import icon15 from "./img/icon15.png";
+import table from "./img/1008.gif";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
-// arrow1.png
+// 1008.gif
 function Home() {
   // const ref = useRef(null);
   var width = false;
@@ -40,9 +41,15 @@ function Home() {
   };
 
   const q = query(collection(db, "users"));
+  const recent_deposits = query(collection(db, "recent_deposits"));
+  const recent_payment = query(collection(db, "recent_payment"));
   const [data, setdata] = useState([]);
+  const [recents, setrecents] = useState([]);
+  const [recentpay, setrecentpay] = useState([]);
   const [date, setdate] = useState("");
   const userArray = [];
+  const recentsArray = [];
+  const recentsArraypay = [];
   const getdata = async () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -55,18 +62,54 @@ function Home() {
       // userArray.push(doc.data())
     });
     setdata(userArray);
+    // console.log("====================================");
+    // console.log(userArray);
+    // console.log(userArray.length);
+    // console.log("====================================");
+  };
+
+  const get_recent_deposits = async () => {
+    const querySnapshot = await getDocs(recent_deposits);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.data());
+      if (recentsArray.indexOf(doc.data()) === -1) {
+        recentsArray.push(doc.data());
+        console.log(recentsArray);
+      }
+      // recentsArray.push(doc.data())
+    });
+    setrecents(recentsArray);
     console.log("====================================");
-    console.log(userArray);
-    console.log(userArray.length);
+    console.log(recentsArray);
+    // console.log(recentsArray.length);
     console.log("====================================");
   };
 
+  const get_recent_payment = async () => {
+    const querySnapshot = await getDocs(recent_payment);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.data());
+      if (recentsArraypay.indexOf(doc.data()) === -1) {
+        recentsArraypay.push(doc.data());
+        console.log(recentsArraypay);
+      }
+      // recentsArraypay.push(doc.data())
+    });
+    setrecentpay(recentsArraypay);
+    console.log("====================================");
+    console.log(recentsArraypay);
+    // console.log(recentsArray.length);
+    console.log("====================================");
+  };
   useEffect(() => {
     if (window.screen.width <= "600") {
       width = true;
     }
     getdata();
-
+    get_recent_deposits();
+    get_recent_payment();
     let today = new Date().toISOString().slice(0, 10);
 
     const startDate = "2023-09-12";
@@ -75,7 +118,6 @@ function Home() {
     const diffInMs = new Date(endDate) - new Date(startDate);
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
     setdate(diffInDays);
-
   }, [userArray]);
 
   const slides = [
@@ -835,6 +877,62 @@ hover:border-white"
             <p className="font-bold p-2">INVESTORS</p>
           </div>
         </div>
+
+        <div className="flex justify-evenly  w-full
+        max-[600px]:flex-col max-[600px]:justify-center max-[600px]:items-center max-[600px]:px-4
+        ">
+          <ul>
+            <li className="text-xl border px-32 py-4 text-black font-semibold mt-8
+            max-[600px]:text-sm
+            ">
+              RECENT DEPOSITS
+            </li>
+            {recents.map((item) => 
+          (
+            <li className="flex justify-between items-center px-12 border py-3">
+                <div className="flex items-center justify-center">
+                  <img src={table} width={40} alt="" />{" "}
+                  <p className="text-2xl ml-4
+                          max-[600px]:text-lg
+                  ">{item.name}</p>
+                </div>
+                <div className="text-2xl text-blue-900 font-semibold 
+                 max-[600px]:text-lg
+                ">
+                  
+                  ${item.price}{" "}
+                </div>
+              </li>
+          ) 
+              
+            )}
+          </ul>
+
+
+          <ul>
+            <li className="text-xl border px-32 py-4 text-black font-semibold mt-8
+                  max-[600px]:text-sm
+            ">
+            RECENT PAYMENT
+            </li>
+            {recentpay.map((item) => 
+          (
+            <li className="flex justify-between items-center px-12 border py-3">
+                <div className="flex items-center justify-center">
+                  <img src={table} width={40} alt="" />{" "}
+                  <p className="text-2xl ml-4   max-[600px]:text-lg">{item.name}</p>
+                </div>
+                <div className="text-2xl text-blue-900 font-semibold      max-[600px]:text-lg">
+                  ${item.price}{" "}
+                </div>
+              </li>
+          ) 
+              
+            )}
+          </ul>
+        </div>
+
+
 
 
 
