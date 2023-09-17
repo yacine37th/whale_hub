@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
-import { auth } from "../firebase/firebase";
+import { auth, db } from "../firebase/firebase";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 import logo from "./img/0_1_1694457176539.png";
 import NavBarAuth from "./NavBarAuth";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,12 +19,17 @@ function Login() {
     } else {
       const res = await signInWithEmailAndPassword(au, em, pa)
         .then((userCredential) => {
+          let today = new Date().toISOString().slice(0, 10);
+
           // Signed in
           const user = userCredential.user;
           // ...
-          console.log(userCredential);
-          //  alert("Login Success");
-          //
+          // console.log(user.uid);
+          updateDoc(doc(db, "users", user.uid), {
+            userLastAccess : today
+          });
+           alert("Login Success");
+           navigate("/profil")
           console.log("deded");
         })
         .catch((error) => {
@@ -39,6 +45,8 @@ function Login() {
             alert("Your Password is wrong ");
           }
         });
+
+      
 
       //  navigate("/" , {replace : true})
     }

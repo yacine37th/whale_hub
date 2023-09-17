@@ -49,6 +49,8 @@ export const register = async (
   if (em === "" || pa === "") {
     alert("Please Enter Email and Password");
   } else {
+    let today = new Date().toISOString().slice(0, 10);
+
     await createUserWithEmailAndPassword(au, em, pa)
       .then((userCredential) => {
         // Signed in
@@ -64,6 +66,8 @@ export const register = async (
             userEmail: em,
             userPassword: pa,
             userID: user.uid,
+            userRegistrationDate : today,
+            userLastAccess : today,
           });
           //      const docRef =  addDoc( user.uid, collection(db, "users"), {
           //   email : email,

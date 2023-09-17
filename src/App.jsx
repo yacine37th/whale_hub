@@ -8,6 +8,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Login from './auth/Login'
 import Register from './auth/Register'
 import ForgotPassword from './auth/ForgotPassword'
+import UserAccount from './userAccount/UserAccount'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgetPassword" element={<ForgotPassword />} />
+        <Route path="/profil" element={<UserAccount />} />
        
       </Routes>
     </>
