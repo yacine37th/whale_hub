@@ -2,6 +2,8 @@
 // import { useState } from "react";
 // import { db } from "../firebase/firebase";
 
+import { signOut } from "firebase/auth";
+
 // const q = query(collection(db, "users"));
 // const recent_deposits = query(collection(db, "recent_deposits"));
 // export const [data, setdata] = useState([]);
@@ -44,3 +46,14 @@
 //   // console.log(recentsArray.length);
 //   console.log("====================================");
 // };
+
+export const onLogout = (au) => {
+    signOut(au)
+      .then(() => {
+        // Sign-out successful.
+        setisLogin(false);
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };

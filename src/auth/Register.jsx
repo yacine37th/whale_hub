@@ -86,7 +86,7 @@ function Register() {
         <div className=" flex justify-center flex-col items-center
         ">
           <h3 className="text-gray-400
-            max-[600px]:text-xl
+            max-[600px]:text-xs
           ">FREEDOM BEGINS WHERE WORK FINISHES</h3>
           <h2 className="text-4xl font-bold text-gray-600 mb-2 
           max-[600px]:text-xl
@@ -236,7 +236,7 @@ function Register() {
                 type="Baridymob"
                 name="Baridymob"
                 id="Baridymob"
-                placeholder="Your Baridymob Dzforex Account"
+                placeholder="Your Baridymob While Hub Account"
                 onChange={(e) => {
                   setBaridymob(e.target.value);
                 }}

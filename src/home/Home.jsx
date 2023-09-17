@@ -24,7 +24,8 @@ import icon13 from "./img/icon13.png";
 import icon15 from "./img/icon15.png";
 import table from "./img/1008.gif";
 import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { auth, db } from "../firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 // 1008.gif
 function Home() {
@@ -54,10 +55,10 @@ function Home() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.data());
+      // console.log(doc.data());
       if (userArray.indexOf(doc.data()) === -1) {
         userArray.push(doc.data());
-        console.log(userArray);
+        // console.log(userArray);
       }
       // userArray.push(doc.data())
     });
@@ -72,38 +73,41 @@ function Home() {
     const querySnapshot = await getDocs(recent_deposits);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.data());
+      // console.log(doc.data());
       if (recentsArray.indexOf(doc.data()) === -1) {
         recentsArray.push(doc.data());
-        console.log(recentsArray);
+        // console.log(recentsArray);
       }
       // recentsArray.push(doc.data())
     });
     setrecents(recentsArray);
-    console.log("====================================");
-    console.log(recentsArray);
-    // console.log(recentsArray.length);
-    console.log("====================================");
+    // console.log("====================================");
+    // console.log(recentsArray);
+    // // console.log(recentsArray.length);
+    // console.log("====================================");
   };
 
   const get_recent_payment = async () => {
     const querySnapshot = await getDocs(recent_payment);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.data());
+      // console.log(doc.data());
       if (recentsArraypay.indexOf(doc.data()) === -1) {
         recentsArraypay.push(doc.data());
-        console.log(recentsArraypay);
+        // console.log(recentsArraypay);
       }
       // recentsArraypay.push(doc.data())
     });
     setrecentpay(recentsArraypay);
-    console.log("====================================");
-    console.log(recentsArraypay);
-    // console.log(recentsArray.length);
-    console.log("====================================");
+    // console.log("====================================");
+    // console.log(recentsArraypay);
+    // // console.log(recentsArray.length);
+    // console.log("====================================");
   };
+
   useEffect(() => {
+    
+    
     if (window.screen.width <= "600") {
       width = true;
     }
@@ -502,44 +506,52 @@ hover:border-white"
             <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
 
             {/* ////////////////////// TABLE  */}
-            <div className="text-white mt-9 max-[600px]:hidden mb-12">
+            <div className="text-white mt-9  mb-12
+                        max-[600px]:overflow-x-scroll max-[600px]:w-full max-[600px]:px-4 
+            ">
               <ul className={`flex `}>
                 <li className="border-4  mr-2">
-                  <div className="text-4xl border-b-4 p-4"> BEGINNER PLAN</div>
+                  <div className="text-4xl border-b-4 p-4
+                  max-[600px]:text-2xl
+                  "> BEGINNER PLAN</div>
                   <div
                     className="flex justify-center flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100
                   "
                   >
-                    <span className="text-5xl">
-                      40<span className="text-6xl font-bold ">%</span> - 60
-                      <span className="text-6xl font-bold ">%</span>
+                    <span className="text-5xl     max-[600px]:text-3xl">
+                      40<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 60
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>
                     </span>
-                    <div className="flex justify-between p-4   text-xl">
+                    <div className="flex justify-between p-4   text-xl max-[600px]:text-sm">
                       <span>Company</span>
                       <span>Investor</span>
                     </div>
                   </div>
 
-                  <div className="flex justify-between text-3xl p-4  px-12 border-b">
+                  <div className="flex justify-between text-3xl p-4  px-12 border-b 
+                 
+                  ">
                     <span>50$</span>-<span>999$</span>
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>
 
                 <li className="border-4 mr-2">
-                  <div className="text-4xl border-b-4 p-4">TRAINEES PLAN</div>
+                  <div className="text-4xl border-b-4 p-4
+                           max-[600px]:text-xl
+                  ">TRAINEES PLAN</div>
                   <div
                     className="flex justify-center flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100
                   "
                   >
-                    <span className="text-5xl ">
-                      30<span className="text-6xl font-bold ">%</span> - 70
-                      <span className="text-6xl font-bold ">%</span>{" "}
+                    <span className="text-5xl     max-[600px]:text-3xl ">
+                      30<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 70
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>{" "}
                     </span>
-                    <div className="flex justify-between p-4   text-xl">
-                      <span>Company</span>
+                    <div className="flex justify-between p-4   text-xl max-[600px]:text-base">
+                      <span className="mr-4">Company</span>
                       <span>Investor</span>
                     </div>
                   </div>
@@ -551,16 +563,16 @@ hover:border-white"
                 </li>
 
                 <li className="border-4 mr-2">
-                  <div className="text-4xl border-b-4 p-4">WORKER PLAN</div>
+                  <div className="text-4xl border-b-4 p-4           max-[600px]:text-2xl">WORKER PLAN</div>
                   <div
                     className="flex justify-center text-4xl flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100"
                   >
-                    <span className="text-5xl ">
-                      20<span className="text-6xl font-bold ">%</span> - 80
-                      <span className="text-6xl font-bold ">%</span>
+                    <span className="text-5xl     max-[600px]:text-3xl ">
+                      20<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 80
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>
                     </span>
-                    <div className="flex justify-between p-4   text-xl">
+                    <div className="flex justify-between p-4   text-xl max-[600px]:text-sm">
                       <span>Company</span>
                       <span>Investor</span>
                     </div>
@@ -573,7 +585,7 @@ hover:border-white"
                 </li>
 
                 <li className="border-4  mr-2">
-                  <div className="text-4xl border-b-4 p-4">
+                  <div className="text-4xl border-b-4 p-4          max-[600px]:text-xl">
                     PROFESSIONALS PLAN
                   </div>
                   <div
@@ -583,19 +595,23 @@ hover:border-white"
                   >
                     <div>
                       {" "}
-                      <span className="text-5xl">
-                        10<span className="text-6xl font-bold ">%</span> - 90
-                        <span className="text-6xl font-bold ">%</span>
+                      <span className="text-5xl     max-[600px]:text-3xl">
+                        10<span className="text-6xl font-bold  max-[600px]:text-4xl">%</span> - 90
+                        <span className="text-6xl font-bold  max-[600px]:text-4xl">%</span>
                       </span>
                     </div>{" "}
-                    <div className="flex justify-between p-4 px-16  text-xl">
+                    <div className="flex justify-between p-4   text-xl max-[600px]:text-sm
+                    max-[600px]:px-7
+                    ">
                       <span>Company</span>
                       <span>Investor</span>
                     </div>
                   </div>
 
-                  <div className="flex justify-between text-2xl p-4 px-20 border-b">
-                    <span className="">OVER THEN 50000$</span>
+                  <div className="flex justify-between text-2xl p-4 px-20 border-b
+                  ">
+                    <span className="mr-3">OVER THEN 50000$</span>
+                 
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>
@@ -604,18 +620,17 @@ hover:border-white"
 
             {/* /////////////////carousel  */}
 
-            <div className="min-[601px]:hidden max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
+            {/* <div className="min-[601px]:hidden max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
               <div
                 style={{
                   backgroundImage: `url(${slides[currentIndex].url})`,
                 }}
                 className="w-auto h-full rounded-2xl bg-center bg-cover duration-500 "
               ></div>
-              {/* Left Arrow */}
               <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                 <BsChevronCompactLeft onClick={prevSlide} size={30} />
               </div>
-              {/* Right Arrow */}
+     
               <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                 <BsChevronCompactRight onClick={nextSlide} size={30} />
               </div>
@@ -630,7 +645,7 @@ hover:border-white"
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* <Carousel data={slides} /> */}
           </div>
@@ -878,98 +893,128 @@ hover:border-white"
           </div>
         </div>
 
-        <div className="flex justify-evenly  w-full
+        <div
+          className="flex justify-evenly  w-full
         max-[600px]:flex-col max-[600px]:justify-center max-[600px]:items-center max-[600px]:px-4
-        ">
+        "
+        >
           <ul>
-            <li className="text-xl border px-32 py-4 text-black font-semibold mt-8
+            <li
+              className="text-xl border px-32 py-4 text-black font-semibold mt-8
             max-[600px]:text-sm
-            ">
+            "
+            >
               RECENT DEPOSITS
             </li>
-            {recents.map((item) => 
-          (
-            <li className="flex justify-between items-center px-12 border py-3">
+            {recents.map((item) => (
+              <li key={item.name} className="flex justify-between items-center px-12 border py-3">
                 <div className="flex items-center justify-center">
                   <img src={table} width={40} alt="" />{" "}
-                  <p className="text-2xl ml-4
+                  <p
+                    className="text-2xl ml-4
                           max-[600px]:text-lg
-                  ">{item.name}</p>
+                  "
+                  >
+                    {item.name}
+                  </p>
                 </div>
-                <div className="text-2xl text-blue-900 font-semibold 
+                <div
+                  className="text-2xl text-blue-900 font-semibold 
                  max-[600px]:text-lg
-                ">
-                  
+                "
+                >
                   ${item.price}{" "}
                 </div>
               </li>
-          ) 
-              
-            )}
+            ))}
           </ul>
 
-
           <ul>
-            <li className="text-xl border px-32 py-4 text-black font-semibold mt-8
+            <li
+              className="text-xl border px-32 py-4 text-black font-semibold mt-8
                   max-[600px]:text-sm
-            ">
-            RECENT PAYMENT
+            "
+            >
+              RECENT PAYMENT
             </li>
-            {recentpay.map((item) => 
-          (
-            <li className="flex justify-between items-center px-12 border py-3">
+            {recentpay.map((item) => (
+              <li key={item.name} className="flex justify-between items-center px-12 border py-3">
                 <div className="flex items-center justify-center">
                   <img src={table} width={40} alt="" />{" "}
-                  <p className="text-2xl ml-4   max-[600px]:text-lg">{item.name}</p>
+                  <p className="text-2xl ml-4   max-[600px]:text-lg">
+                    {item.name}
+                  </p>
                 </div>
                 <div className="text-2xl text-blue-900 font-semibold      max-[600px]:text-lg">
                   ${item.price}{" "}
                 </div>
               </li>
-          ) 
-              
-            )}
+            ))}
           </ul>
         </div>
 
-{/* ////////////////////Affiliation program */}
+        {/* ////////////////////Affiliation program */}
 
-
-<div className="back5 mt-28 w-full text-white">
-  <div className="w-ful ">
-          <div
-            className="flex justify-center flex-col items-center mt-32
+        <div className="back5 mt-28 w-full text-white">
+          <div className="w-ful ">
+            <div
+              className="flex justify-center flex-col items-center mt-32
         max-[600px]:mt-52
         "
-          >
-            <div className=" flex justify-center flex-col items-center">
-              <h3 className="text-white italic    max-[600px]:text-xs ">
-              BUY THE STOCK QUICKLY, AND SELL HIGH!
-              </h3>
-              <h2 className="text-4xl font-bold text-white mb-2      max-[600px]:text-xl">
-              AFFILIATE PROGRAM
-              </h2>
+            >
+              <div className=" flex justify-center flex-col items-center">
+                <h3 className="text-white italic    max-[600px]:text-xs ">
+                  BUY THE STOCK QUICKLY, AND SELL HIGH!
+                </h3>
+                <h2 className="text-4xl font-bold text-white mb-2      max-[600px]:text-xl">
+                  AFFILIATE PROGRAM
+                </h2>
+              </div>
+              <div
+                classNa
+                me="border-b-4 w-36 text-center justify-center flex items-center text-gray-700"
+              ></div>
             </div>
-            <div className="border-b-4 w-36 text-center justify-center flex items-center text-gray-700"></div>
+          </div>
+
+          <div
+            className="px-32 text-lg  mt-14 max-[600px]:px-4  max-[600px]:text-center
+        max-[600px]:text-sm
+        "
+          >
+            <p>
+              The affiliate program of WAHLE HUB DZ gives everyone an easy and
+              convenient way to make profit by attracting new members.
+              <p>
+                If you are an active user of the Internet, know how to write
+                interesting articles or reviews, you have your own website,
+                blog, forum and other resources and ways to attract new users
+                (both online and offline) in the investment company WAHLE HUB
+                DZ, and you wish to receive income from building your own
+                network of partners, so this project is for you!
+              </p>
+            </p>
+            <p>
+              Each participant of the investment company WAHLE HUB DZ can
+              attract new users to the site of the project and receive 8% of the
+              deposit of new member! The model of the affiliate program involves
+              making a profit in the second.
+            </p>
+            <p>
+              If your referral makes a deposit on any of the represented plans,
+              you get referral bonuses instantly to your bonus account, then you
+              can withdraw funds to your personal e-wallet in the relevant
+              payment system as fast as you wish.
+            </p>
+            <p
+              className="text-5xl font-bold 
+max-[600px]:text-2xl mt-8  mb-20
+"
+            >
+              REWARD 5%
+            </p>
           </div>
         </div>
-
-
-        <div className="px-32 text-lg  mt-14 max-[600px]:px-4  max-[600px]:text-center
-        max-[600px]:text-sm
-        ">
-          <p>The affiliate program of WAHLE HUB DZ gives everyone an easy and convenient way to make profit by attracting new members.
-<p>If you are an active user of the Internet, know how to write interesting articles or reviews, you have your own website, blog, forum and other resources and ways to attract new users (both online and offline) in the investment company WAHLE HUB DZ, and you wish to receive income from building your own network of partners, so this project is for you!</p>
-</p>
-<p>Each participant of the investment company WAHLE HUB DZ can attract new users to the site of the project and receive 8% of the deposit of new member! The model of the affiliate program involves making a profit in the second.</p>
-<p>If your referral makes a deposit on any of the represented plans, you get referral bonuses instantly to your bonus account, then you can withdraw funds to your personal e-wallet in the relevant payment system as fast as you wish.</p>
-<p className="text-5xl font-bold 
-max-[600px]:text-2xl mt-8  mb-20
-">REWARD 5%</p>
-        </div>
-</div>
-
-
 
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
       </div>

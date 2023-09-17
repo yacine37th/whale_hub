@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 import "./index.css";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { onLogout } from "./functions";
 
 function HomeNavBar() {
+  const [isLogin, setisLogin] = useState(false);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        console.log("====================================");
+        console.log(uid);
+        console.log("====================================");
+        setisLogin(true);
+        // ...
+      } else {
+        // User is signed out
+        console.log("====================================");
+        console.log("no user");
+        console.log("====================================");
+        // ...
+      }
+    });
+  }, []);
+
+
   return (
     <div className=" top-0 left-0  px-44 flex justify-between items-center w-full max-[600px]:px-8 ">
       <div className="flex">
@@ -29,26 +55,39 @@ function HomeNavBar() {
           </button>
         </Link>
       </div>
-      <div className=" flex justify-center items-center">
-        <Link to={"/register"} className="text-white hover:text-white ">
+      {isLogin ? (
+        <div>
           <button
+          onClick={()=>onLogout(auth)}
             className="flex items-center background justify-between p-3 bg-transparent outline-none
-   focus:outline-none border-none header-button rounded-none 
+   focus:outline-none border-none header-button rounded-none  text-white hover:text-white
    "
           >
-            <span className=" max-[600px]:text-xs">CREATE ACCOUNT</span>
+            <span className=" max-[600px]:text-xs">Logout</span>
           </button>
-        </Link>{" "}
-        <Link to={"/login"} className="text-white hover:text-white ">
-          <button
-            className="flex items-center background justify-between p-3 bg-transparent outline-none
+        </div>
+      ) : (
+        <div className=" flex justify-center items-center">
+          <Link to={"/register"} className="text-white hover:text-white ">
+            <button
+              className="flex items-center background justify-between p-3 bg-transparent outline-none
    focus:outline-none border-none header-button rounded-none 
    "
-          >
-            <span className=" max-[600px]:text-xs">LOGIN</span>
-          </button>
-        </Link>
-      </div>
+            >
+              <span className=" max-[600px]:text-xs">CREATE ACCOUNT</span>
+            </button>
+          </Link>{" "}
+          <Link to={"/login"} className="text-white hover:text-white ">
+            <button
+              className="flex items-center background justify-between p-3 bg-transparent outline-none
+   focus:outline-none border-none header-button rounded-none 
+   "
+            >
+              <span className=" max-[600px]:text-xs">LOGIN</span>
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,24 +1,52 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { auth } from "../firebase/firebase";
-import { signIN } from "./function";
 import facebook from "./img/facebook.png";
-import telegram from "./img/telegram.png"; 
+import telegram from "./img/telegram.png";
 import logo from "./img/0_1_1694457176539.png";
 import NavBarAuth from "./NavBarAuth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const signIN = async (au, em, pa) => {
+    if (em === "" || pa === "") {
+      alert("Please Enter Email and Password");
+    } else {
+      const res = await signInWithEmailAndPassword(au, em, pa)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+          console.log(userCredential);
+          //  alert("Login Success");
+          //
+          console.log("deded");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(error.code);
+          //
+          console.log("test");
+          if (error.code === "auth/invalid-email") {
+            alert("Please enter Valid Email");
+          }
+          if (error.code === "auth/wrong-password") {
+            alert("Your Password is wrong ");
+          }
+        });
 
+      //  navigate("/" , {replace : true})
+    }
+  };
   return (
     <>
       <div>
-   <NavBarAuth />
-
-
-  
+        <NavBarAuth />
 
         <div className="bg-red-700 flex-1 ">
           <div className="flex justify-center items-center   ">

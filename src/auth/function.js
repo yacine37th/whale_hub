@@ -8,8 +8,10 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+
 export const signIN = async (au, em, pa) => {
-  if (em === "" || pa === "") {
+   if (em === "" || pa === "") {
     alert("Please Enter Email and Password");
   } else {
     const res = await signInWithEmailAndPassword(au, em, pa)
@@ -17,7 +19,9 @@ export const signIN = async (au, em, pa) => {
         // Signed in
         const user = userCredential.user;
         // ...
-        console.log(userCredential);
+        console.log(userCredential);          
+        alert("Login Success");
+
         console.log("deded");
       })
       .catch((error) => {
