@@ -26,6 +26,7 @@ import table from "./img/1008.gif";
 import { collection, getDocs, query } from "firebase/firestore";
 import { auth, db } from "../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import BottomNav from "../auth/BottomNav";
 
 // 1008.gif
 function Home() {
@@ -216,6 +217,7 @@ transition ease-in-out  duration-700    font-mono
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
+          to={"/faq"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
 transition ease-in-out  duration-700    font-mono
 hover:border-white"
@@ -1019,8 +1021,112 @@ max-[600px]:text-2xl mt-8  mb-20
           </div>
         </div>
 
+
+
+
+
+             
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
+  
+      
+      
+      
+      
+      
+
+
+
+{/* buttom */}
+
+        <div
+      className="background    h-80 px-44 flex justify-between items-start 
+    max-[600px]:p-5 max-[600px]:h-auto
+mt-16 w-full left-0 
+    max-[600px]:flex-col      max-[600px]:items-center 
+  max-[600px]:mt-32 
+    "
+    >
+      <div className=" mt-14  max-[600px]:flex      max-[600px]:flex-col    max-[600px]:items-center 
+        max-[600px]:justify-center
+      ">
+        <Link to={"/"} className="">
+          <img
+            src={logo}
+            width={50}
+            className=" max-w-full cursor-pointer"
+            // height={250}
+            alt=""
+          />
+        </Link>
+        <div className="text-left  text-white pt-5 w-36 max-[600px]:text-center">
+          <p>The brightest star in the background of the rising sun!</p>
+        </div>
+        <div className="text-left  text-white pt-5 w-36 font-bold max-[600px]:text-center">
+          <p>TELL ABOUT US</p>
+        </div>
       </div>
+
+      <div className="flex flex-col mt-14  text-left w-56     max-[600px]:items-center ">
+        <p className="font-bold text-white mb-4">SITE NAVIGATION</p>
+        <Link
+        to={"/aboutus"}
+          className=" text-white uppercase duration-300
+            max-[600px]:p-1 
+            border-transparent border
+             hover:border-white  hover:text-white
+            p-2
+            "
+        >
+          About US
+        </Link>
+        <Link
+          to={"/plans"}
+          className="  text-white uppercase duration-300
+            max-[600px]:p-1 
+            border-transparent border
+             hover:border-white  hover:text-white
+            p-2"
+        >
+          INVESTMENT PLANS
+        </Link>
+
+        <Link
+          className="  text-white uppercase duration-300
+            max-[600px]:p-1 
+            border-transparent border
+             hover:border-white  hover:text-white
+            p-2"
+        >
+          rate US
+        </Link>
+        <Link
+        to={"/support"}
+          className="  text-white uppercase duration-300
+            max-[600px]:p-1 
+            border-transparent border
+             hover:border-white  hover:text-white
+            p-2"
+        >
+          support
+        </Link>
+        <Link
+        to={"/faq"}
+          className="  text-white uppercase duration-300
+            max-[600px]:p-1 
+            border-transparent border
+             hover:border-white  hover:text-white
+            p-2"
+        >
+          faq
+        </Link>
+      </div>
+
+      <div className="flex flex-col text-left w-56 mt-14     max-[600px]:items-center ">
+        <p className="font-bold text-white mb-4">LATEST NEWS</p>
+      </div>
+    </div>
+      </div>
+  
     </>
   );
 }

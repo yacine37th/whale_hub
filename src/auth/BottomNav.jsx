@@ -67,6 +67,7 @@ mt-16 w-full left-0
           rate US
         </Link>
         <Link
+        to={"/support"}
           className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
@@ -76,6 +77,7 @@ mt-16 w-full left-0
           support
         </Link>
         <Link
+        to={"/faq"}
           className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border

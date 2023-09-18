@@ -56,7 +56,7 @@ max-[600px]:top-20
         >
           <div
             className="flex flex-col bg-white  m-8 h-56 rounded-lg p-4 max-[600px]:p-2  max-[600px]:m-0
-
+       
           "
           >
             <Link
