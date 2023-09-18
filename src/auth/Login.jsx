@@ -19,14 +19,22 @@ function Login() {
     } else {
       const res = await signInWithEmailAndPassword(au, em, pa)
         .then((userCredential) => {
-          let today = new Date().toISOString().slice(0, 10);
+             var currentdate = new Date(); 
+var datetime =  + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " " 
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+                console.log("datetime");
+                console.log(datetime);
 
           // Signed in
           const user = userCredential.user;
           // ...
           // console.log(user.uid);
           updateDoc(doc(db, "users", user.uid), {
-            userLastAccess : today
+            userLastAccess : datetime
           });
            alert("Login Success");
            navigate("/profil")

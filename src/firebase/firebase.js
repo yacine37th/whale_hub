@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { collection, getFirestore, query } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyADydo7EcSIk_nyLbSGcn5UXeQD9ND9qaQ",
@@ -15,3 +15,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+
+export const userCollection = query(collection(db, "users"));

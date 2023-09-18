@@ -28,6 +28,9 @@ export default function NavBarAuth() {
         // ...
       }
     });
+
+    console.log("///////////////");
+
   }, []);
 
   // const onLogout = (au) => {

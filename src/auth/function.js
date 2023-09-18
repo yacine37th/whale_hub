@@ -49,8 +49,13 @@ export const register = async (
   if (em === "" || pa === "") {
     alert("Please Enter Email and Password");
   } else {
-    let today = new Date().toISOString().slice(0, 10);
+    var currentdate = new Date(); 
+    var datetime =  + currentdate.getDate() + "/"
+    + (currentdate.getMonth()+1)  + "/" 
+    + currentdate.getFullYear()
 
+    console.log("datetime");
+    console.log(datetime);
     await createUserWithEmailAndPassword(au, em, pa)
       .then((userCredential) => {
         // Signed in
@@ -66,8 +71,13 @@ export const register = async (
             userEmail: em,
             userPassword: pa,
             userID: user.uid,
-            userRegistrationDate : today,
-            userLastAccess : today,
+            userRegistrationDate : datetime,
+            userLastAccess : datetime,
+            userAccountBalance : 0.00,
+            userEarnedTotal: 0.00,
+            userPendingWithdrawal : 0.00,
+            userWithdrawalTotal : 0.00,
+            userActiveDeposit :  0.00,
           });
           //      const docRef =  addDoc( user.uid, collection(db, "users"), {
           //   email : email,

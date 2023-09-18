@@ -185,6 +185,7 @@ function Home() {
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
+          to={'/plans'}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200  border-opacity-30
           transition ease-in-out  duration-700    font-mono
            hover:border-white"
@@ -203,6 +204,7 @@ transition ease-in-out  duration-700    font-mono
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
+          to={"/support"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
 transition ease-in-out  duration-700    font-mono
  hover:border-white"
