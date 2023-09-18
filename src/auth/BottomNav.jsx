@@ -36,6 +36,7 @@ mt-16 w-full left-0
       <div className="flex flex-col mt-14  text-left w-56     max-[600px]:items-center ">
         <p className="font-bold text-white mb-4">SITE NAVIGATION</p>
         <Link
+        to={"/aboutus"}
           className=" text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border

@@ -174,6 +174,7 @@ function Home() {
         </div>
         <div className=" pt-7 max-[600px]:hidden">
           <Link
+          to={"/aboutus"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
           transition ease-in-out  duration-700
            hover:border-white

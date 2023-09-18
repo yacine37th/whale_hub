@@ -15,6 +15,7 @@ function Investment() {
         "
       >
         <Link
+        to={"/aboutus"}
           className="p-10 text-black uppercase duration-300
             max-[600px]:p-1 
             "

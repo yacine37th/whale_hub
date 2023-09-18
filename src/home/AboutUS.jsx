@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
-import BottomNav from "../auth/BottomNav";
-import NavBarAuth from "../auth/NavBarAuth";
-import { Link } from "react-router-dom";
+import React from 'react'
+import BottomNav from '../auth/BottomNav'
+import { Link } from 'react-router-dom'
+import NavBarAuth from '../auth/NavBarAuth'
 import logo from "./img/0_1_1694457176539.png";
 
-function Support() {
-  var width = false;
-
-  useEffect(() => {
-    if (window.screen.width <= "600") {
-      width = true;
-    }
-  }, []);
+function AboutUS() {
   return (
     <div className="bg-gray-100 flex-1 rounded-2xl">
       <NavBarAuth />
@@ -60,22 +53,23 @@ function Support() {
       >
         <div className="p-8 ">
           <div className="border-b border-white p-5">
-            <p className="text-2xl font-bold uppercase">Support</p>
+            <p className="text-2xl font-bold uppercase">about us</p>
           </div>
 
           <div className="flex justify- items-center mt-9 p-20 
           max-[600px]:p-2
           ">
-            <div className="flex flex-col items-center max-[600px]:hidden">
+            {/* <div className="flex flex-col items-center max-[600px]:hidden">
               <div
                 className={`border-2 rounded-full 
                     flex flex-col w-24
                    max-[600px]:hidden`}
                      >
-                <img src={logo} alt=""
+                {/* <img src={logo} alt=""
                 className="max-w-full"
-                width={width ? 50 : 200} />
-              </div>
+                // width={width ? 50 : 200}
+                 /> */}
+              {/* </div>
               <div className="">
                <div className="w-80">
                <p>
@@ -84,19 +78,12 @@ function Support() {
                 </p>
                </div>
               </div>
-            </div>
+            </div>  */}
 
             <div className="flex flex-col flex-1 ml-48 max-[600px]:ml-0
             
             "> 
-                <input type="text" className="border border-black p-4 m-2 focus:outline-none
-                 max-[600px]:p-1      max-[600px]:w-56   
-                " name="" id="" placeholder="Full Name"/>
-                <input type="text" className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   " name="" id="" placeholder="Email"/>
-                <textarea id="txtid" name="txtname" rows="4" cols="50" maxlength="200" placeholder=""
-                className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
-                />
-            <button className="backGround text-white w-full mt-4">SEND</button>
+              
        </div>
           </div>
         </div>
@@ -104,7 +91,7 @@ function Support() {
 
       <BottomNav />
     </div>
-  );
+  )
 }
 
-export default Support;
+export default AboutUS

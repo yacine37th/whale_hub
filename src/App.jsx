@@ -11,6 +11,8 @@ import ForgotPassword from './auth/ForgotPassword'
 import UserAccount from './userAccount/UserAccount'
 import Investment from './home/Investment'
 import Support from './home/Support'
+import AboutUS from './home/AboutUS'
+import FAQ from './home/FAQ'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +27,8 @@ function App() {
         <Route path="/profil" element={<UserAccount />} />
         <Route path="/plans" element={<Investment />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/aboutus" element={<AboutUS />} />
+        <Route path="/faq" element={<FAQ />} />
 
 
       </Routes>
