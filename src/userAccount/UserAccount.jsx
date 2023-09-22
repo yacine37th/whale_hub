@@ -5,11 +5,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, db, userCollection } from "../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import "./user.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import arrow from "./img/images.png";
 
 function UserAccount() {
   const [user, setuser] = useState({});
+  const test =  {
+    "data": "8edded" ,
+    "user" : "ded", 
+  }
+  const navigate = useNavigate();
 
   const getUser = async (docID) => {
     const docRef = doc(db, "users", `${docID}`);
@@ -56,7 +61,6 @@ max-[600px]:top-20
         >
           <div
             className="flex flex-col bg-white  m-8 h-56 rounded-lg p-4 max-[600px]:p-2  max-[600px]:m-0
-       
           "
           >
             <Link
@@ -70,16 +74,19 @@ max-[600px]:top-20
                 src={arrow}
                 width={8}
                 alt=""
-                className="group-hover:scale-150 group-hover:mr-2 "
+                className="group-hover:scale-150 group-hover:mr-2 duration-300 "
               />
             </Link>
-            <Link className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group             flex items-center justify-between           text-black">
+            <Link 
+            to={`/deposit`}
+            state={{ from: test }}
+            className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group             flex items-center justify-between           text-black">
               <p>MAKE DEPOSIT</p>
               <img
                 src={arrow}
                 width={8}
                 alt=""
-                className="group-hover:scale-150 group-hover:mr-2 "
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
@@ -88,7 +95,7 @@ max-[600px]:top-20
                 src={arrow}
                 width={8}
                 alt=""
-                className="group-hover:scale-150 group-hover:mr-2 "
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase      group       flex items-center justify-between           text-black">
@@ -97,7 +104,7 @@ max-[600px]:top-20
                 src={arrow}
                 width={8}
                 alt=""
-                className="group-hover:scale-150 group-hover:mr-2 "
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase   group flex items-center justify-between           text-black">
@@ -107,7 +114,7 @@ max-[600px]:top-20
                 src={arrow}
                 width={8}
                 alt=""
-                className="group-hover:scale-150 group-hover:mr-2 "
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase  group  flex items-center justify-between           text-black">
@@ -140,14 +147,21 @@ max-[600px]:top-20
             max-[600px]:hidden
             "
             >
-              <button
+
+            <a href="https://api.whatsapp.com/send?phone=+213674226441" 
+               target="_blank"
+            >
+
+            <button
                 className=" w-44  p-2 backGround  border-white   text-white  text-base
                hover:border-white rounded-2xl
               max-[600px]:text-xs  max-[600px]:p-0    max-[600px]:w-28 focus:outline-none
                "
               >
-                MAKE A DEPOSIT
+                MAKE DEPOSIT
               </button>
+            </a>
+
               <button
                 className="w-44   p-2 backGround  border-white   text-white  text-base
               rounded-2xl  hover:border-white
@@ -160,7 +174,7 @@ max-[600px]:top-20
 
             <table id="customers" className="mt-14 max-[600px]:text-xs">
               <tr>
-                <td>User :</td>
+                <td>User </td>
                 <td>{user.userFullName}</td>
               </tr>
               <tr>

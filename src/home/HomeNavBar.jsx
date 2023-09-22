@@ -36,16 +36,18 @@ function HomeNavBar() {
   return (
     <div className=" top-0 left-0  px-44 flex justify-between items-center w-full max-[600px]:px-8 ">
       <div className="flex">
-        <Link>
-          <button
+        
+          <a
             className="flex items-center background justify-between p-3 bg-transparent outline-none
    focus:outline-none border-none header-button rounded-none 
    "
+   href="https://telegram.me/WHALEHUBDZ2023"
+   target="_blank"
           >
             <img src={telegram} className="mr-2" width={15} alt="" />{" "}
-            <span className="text-white max-[600px]:text-xs ">Telegram</span>
-          </button>
-        </Link>
+            <p 
+            className="text-white max-[600px]:text-xs ">Telegram</p>
+          </a>
         <Link>
           <button
             className="flex items-center background justify-between p-3 bg-transparent outline-none
