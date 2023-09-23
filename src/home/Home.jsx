@@ -562,7 +562,7 @@ hover:border-white"
                   </div>
 
                   <div className="flex justify-between text-3xl p-4 border-b">
-                    <span>100$</span>-<span>4999$</span>
+                    <span>1000$</span>-<span>4999$</span>
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>

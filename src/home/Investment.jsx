@@ -132,7 +132,7 @@ function Investment() {
                   <div className="flex justify-between text-xl p-4  px-12 border-b 
                  
                   ">
-                    <span>100$</span> - <span>4999$</span>
+                    <span>1000$</span> - <span>4999$</span>
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>
