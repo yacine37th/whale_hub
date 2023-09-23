@@ -60,7 +60,16 @@ function HomeNavBar() {
         </Link>
       </div>
       {isLogin ? (
-        <div>
+        <div className="flex">
+           <Link
+           to={'/profil'}
+          // onClick={()=>onLogout(auth)}
+            className="flex items-center background justify-between p-3 bg-transparent outline-none
+   focus:outline-none border-none header-button rounded-none  text-white hover:text-white
+   "
+          >
+            <span className=" max-[600px]:text-xs">ACCOUNT</span>
+          </Link>
           <button
           onClick={()=>onLogout(auth)}
             className="flex items-center background justify-between p-3 bg-transparent outline-none

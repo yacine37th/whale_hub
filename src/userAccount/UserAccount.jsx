@@ -77,7 +77,31 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300 "
               />
             </Link>
-            <Link 
+
+
+            <a href="https://api.whatsapp.com/send?phone=+213674226441" 
+               target="_blank"
+             className="max-[600px]:text-xs max-[600px]:pt-4 max-[600px]:lowercase
+             flex items-center justify-between      group   mt-2  text-black"  
+            >
+
+            {/* <button
+                className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group       
+                border-none bg-transparent  focus:outline-none
+                flex items-center justify-between           text-black"
+              > */}
+<p>                MAKE DEPOSIT
+</p>
+              {/* </button> */}
+              <img
+                src={arrow}
+                width={8}
+                alt=""
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
+              />
+            </a>
+
+            {/* <Link 
             to={`/deposit`}
             state={{ from: test }}
             className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group             flex items-center justify-between           text-black">
@@ -88,7 +112,13 @@ max-[600px]:top-20
                 alt=""
                 className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
-            </Link>
+            </Link> */}
+
+
+
+
+
+
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
               <p>Withdrawal</p>
               <img

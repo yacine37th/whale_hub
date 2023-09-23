@@ -19,25 +19,31 @@ function Login() {
     } else {
       const res = await signInWithEmailAndPassword(au, em, pa)
         .then((userCredential) => {
-             var currentdate = new Date(); 
-var datetime =  + currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " " 
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-                console.log("datetime");
-                console.log(datetime);
+          var currentdate = new Date();
+          var datetime =
+            +currentdate.getDate() +
+            "/" +
+            (currentdate.getMonth() + 1) +
+            "/" +
+            currentdate.getFullYear() +
+            " " +
+            currentdate.getHours() +
+            ":" +
+            currentdate.getMinutes() +
+            ":" +
+            currentdate.getSeconds();
+          console.log("datetime");
+          console.log(datetime);
 
           // Signed in
           const user = userCredential.user;
           // ...
           // console.log(user.uid);
           updateDoc(doc(db, "users", user.uid), {
-            userLastAccess : datetime
+            userLastAccess: datetime,
           });
-           alert("Login Success");
-           navigate("/profil")
+          alert("Login Success");
+          navigate("/profil");
           console.log("deded");
         })
         .catch((error) => {
@@ -53,8 +59,6 @@ var datetime =  + currentdate.getDate() + "/"
             alert("Your Password is wrong ");
           }
         });
-
-      
 
       //  navigate("/" , {replace : true})
     }
