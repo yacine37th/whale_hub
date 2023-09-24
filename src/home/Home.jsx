@@ -45,6 +45,7 @@ function Home() {
   const q = query(collection(db, "users"));
   const recent_deposits = query(collection(db, "recent_deposits"));
   const recent_payment = query(collection(db, "recent_payment"));
+
   const [data, setdata] = useState([]);
   const [recents, setrecents] = useState([]);
   const [recentpay, setrecentpay] = useState([]);
@@ -57,17 +58,21 @@ function Home() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.data());
-      if (userArray.indexOf(doc.data()) === -1) {
+
+      if (!userArray.includes(doc.data())) {
         userArray.push(doc.data());
-        // console.log(userArray);
       }
+      // if (userArray.indexOf(doc.data()) === -1) {
+
+      //   // console.log(userArray);
+      // }
       // userArray.push(doc.data())
     });
     setdata(userArray);
-    // console.log("====================================");
-    // console.log(userArray);
+    console.log("====================================");
+    console.log(userArray);
     // console.log(userArray.length);
-    // console.log("====================================");
+    console.log("====================================");
   };
 
   const get_recent_deposits = async () => {
@@ -107,14 +112,9 @@ function Home() {
   };
 
   useEffect(() => {
-    
-    
     if (window.screen.width <= "600") {
       width = true;
     }
-    getdata();
-    get_recent_deposits();
-    get_recent_payment();
     let today = new Date().toISOString().slice(0, 10);
 
     const startDate = "2023-09-12";
@@ -123,7 +123,12 @@ function Home() {
     const diffInMs = new Date(endDate) - new Date(startDate);
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
     setdate(diffInDays);
-  }, [userArray]);
+    return () => {
+      getdata();
+      get_recent_deposits();
+      get_recent_payment();
+    };
+  }, []);
 
   const slides = [
     {
@@ -175,7 +180,7 @@ function Home() {
         </div>
         <div className=" pt-7 max-[600px]:hidden">
           <Link
-          to={"/aboutus"}
+            to={"/aboutus"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
           transition ease-in-out  duration-700
            hover:border-white
@@ -187,7 +192,7 @@ function Home() {
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
-          to={'/plans'}
+            to={"/plans"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200  border-opacity-30
           transition ease-in-out  duration-700    font-mono
            hover:border-white"
@@ -206,7 +211,7 @@ transition ease-in-out  duration-700    font-mono
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
-          to={"/support"}
+            to={"/support"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
 transition ease-in-out  duration-700    font-mono
  hover:border-white"
@@ -217,7 +222,7 @@ transition ease-in-out  duration-700    font-mono
           <span className=" w-1 bg-white border-r"></span>
 
           <Link
-          to={"/faq"}
+            to={"/faq"}
             className="p-3 text-white hover:text-white border-t border-b border-gray-200 border-opacity-30
 transition ease-in-out  duration-700    font-mono
 hover:border-white"
@@ -272,7 +277,7 @@ hover:border-white"
         </div>
 
         <div
-          className="flex justify-center flex-col items-center mt-32
+          className="flex justify-center flex-col items-center mt-44
         max-[600px]:mt-52
         "
         >
@@ -511,22 +516,35 @@ hover:border-white"
             <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
 
             {/* ////////////////////// TABLE  */}
-            <div className="text-white mt-9  mb-12
+            <div
+              className="text-white mt-9  mb-12
                         max-[600px]:overflow-x-scroll max-[600px]:w-full max-[600px]:px-4 
-            ">
+            "
+            >
               <ul className={`flex `}>
                 <li className="border-4  mr-2">
-                  <div className="text-4xl border-b-4 p-4
+                  <div
+                    className="text-4xl border-b-4 p-4
                   max-[600px]:text-2xl
-                  "> BEGINNER PLAN</div>
+                  "
+                  >
+                    {" "}
+                    BEGINNER PLAN
+                  </div>
                   <div
                     className="flex justify-center flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100
                   "
                   >
                     <span className="text-5xl     max-[600px]:text-3xl">
-                      40<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 60
-                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>
+                      40
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>{" "}
+                      - 60
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>
                     </span>
                     <div className="flex justify-between p-4   text-xl max-[600px]:text-sm">
                       <span>Company</span>
@@ -534,26 +552,38 @@ hover:border-white"
                     </div>
                   </div>
 
-                  <div className="flex justify-between text-3xl p-4  px-12 border-b 
+                  <div
+                    className="flex justify-between text-3xl p-4  px-12 border-b 
                  
-                  ">
+                  "
+                  >
                     <span>50$</span>-<span>999$</span>
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>
 
                 <li className="border-4 mr-2">
-                  <div className="text-4xl border-b-4 p-4
+                  <div
+                    className="text-4xl border-b-4 p-4
                            max-[600px]:text-xl
-                  ">TRAINEES PLAN</div>
+                  "
+                  >
+                    TRAINEES PLAN
+                  </div>
                   <div
                     className="flex justify-center flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100
                   "
                   >
                     <span className="text-5xl     max-[600px]:text-3xl ">
-                      30<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 70
-                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>{" "}
+                      30
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>{" "}
+                      - 70
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>{" "}
                     </span>
                     <div className="flex justify-between p-4   text-xl max-[600px]:text-base">
                       <span className="mr-4">Company</span>
@@ -568,14 +598,22 @@ hover:border-white"
                 </li>
 
                 <li className="border-4 mr-2">
-                  <div className="text-4xl border-b-4 p-4           max-[600px]:text-2xl">WORKER PLAN</div>
+                  <div className="text-4xl border-b-4 p-4           max-[600px]:text-2xl">
+                    WORKER PLAN
+                  </div>
                   <div
                     className="flex justify-center text-4xl flex-col p-4 bg-white text-blue-900 font-bold
                   text-opacity-100"
                   >
                     <span className="text-5xl     max-[600px]:text-3xl ">
-                      20<span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span> - 80
-                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">%</span>
+                      20
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>{" "}
+                      - 80
+                      <span className="text-6xl font-bold  max-[600px]:text-4xl ">
+                        %
+                      </span>
                     </span>
                     <div className="flex justify-between p-4   text-xl max-[600px]:text-sm">
                       <span>Company</span>
@@ -601,22 +639,31 @@ hover:border-white"
                     <div>
                       {" "}
                       <span className="text-5xl     max-[600px]:text-3xl">
-                        10<span className="text-6xl font-bold  max-[600px]:text-4xl">%</span> - 90
-                        <span className="text-6xl font-bold  max-[600px]:text-4xl">%</span>
+                        10
+                        <span className="text-6xl font-bold  max-[600px]:text-4xl">
+                          %
+                        </span>{" "}
+                        - 90
+                        <span className="text-6xl font-bold  max-[600px]:text-4xl">
+                          %
+                        </span>
                       </span>
                     </div>{" "}
-                    <div className="flex justify-between p-4   text-xl max-[600px]:text-sm
+                    <div
+                      className="flex justify-between p-4   text-xl max-[600px]:text-sm
                     max-[600px]:px-7
-                    ">
+                    "
+                    >
                       <span>Company</span>
                       <span>Investor</span>
                     </div>
                   </div>
 
-                  <div className="flex justify-between text-2xl p-4 px-20 border-b
-                  ">
+                  <div
+                    className="flex justify-between text-2xl p-4 px-20 border-b
+                  "
+                  >
                     <span className="mr-3">OVER THEN 50000$</span>
-                 
                   </div>
                   <div className="font-bold p-4">DURATION : 7 DAYS</div>
                 </li>
@@ -912,7 +959,10 @@ hover:border-white"
               RECENT DEPOSITS
             </li>
             {recents.map((item) => (
-              <li key={item.name} className="flex justify-between items-center px-12 border py-3">
+              <li
+                key={item.name}
+                className="flex justify-between items-center px-12 border py-3"
+              >
                 <div className="flex items-center justify-center">
                   <img src={table} width={40} alt="" />{" "}
                   <p
@@ -943,7 +993,10 @@ hover:border-white"
               RECENT PAYMENT
             </li>
             {recentpay.map((item) => (
-              <li key={item.name} className="flex justify-between items-center px-12 border py-3">
+              <li
+                key={item.name}
+                className="flex justify-between items-center px-12 border py-3"
+              >
                 <div className="flex items-center justify-center">
                   <img src={table} width={40} alt="" />{" "}
                   <p className="text-2xl ml-4   max-[600px]:text-lg">
@@ -1021,112 +1074,100 @@ max-[600px]:text-2xl mt-8  mb-20
           </div>
         </div>
 
-
-
-
-
-             
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
-  
-      
-      
-      
-      
-      
 
-
-
-{/* buttom */}
+        {/* buttom */}
 
         <div
-      className="background    h-80 px-44 flex justify-between items-start 
+          className="background    h-80 px-44 flex justify-between items-start 
     max-[600px]:p-5 max-[600px]:h-auto
 mt-16 w-full left-0 
     max-[600px]:flex-col      max-[600px]:items-center 
   max-[600px]:mt-32 
     "
-    >
-      <div className=" mt-14  max-[600px]:flex      max-[600px]:flex-col    max-[600px]:items-center 
+        >
+          <div
+            className=" mt-14  max-[600px]:flex      max-[600px]:flex-col    max-[600px]:items-center 
         max-[600px]:justify-center
-      ">
-        <Link to={"/"} className="">
-          <img
-            src={logo}
-            width={50}
-            className=" max-w-full cursor-pointer"
-            // height={250}
-            alt=""
-          />
-        </Link>
-        <div className="text-left  text-white pt-5 w-36 max-[600px]:text-center">
-          <p>The brightest star in the background of the rising sun!</p>
-        </div>
-        <div className="text-left  text-white pt-5 w-36 font-bold max-[600px]:text-center">
-          <p>TELL ABOUT US</p>
-        </div>
-      </div>
+      "
+          >
+            <Link to={"/"} className="">
+              <img
+                src={logo}
+                width={50}
+                className=" max-w-full cursor-pointer"
+                // height={250}
+                alt=""
+              />
+            </Link>
+            <div className="text-left  text-white pt-5 w-36 max-[600px]:text-center">
+              <p>The brightest star in the background of the rising sun!</p>
+            </div>
+            <div className="text-left  text-white pt-5 w-36 font-bold max-[600px]:text-center">
+              <p>TELL ABOUT US</p>
+            </div>
+          </div>
 
-      <div className="flex flex-col mt-14  text-left w-56     max-[600px]:items-center ">
-        <p className="font-bold text-white mb-4">SITE NAVIGATION</p>
-        <Link
-        to={"/aboutus"}
-          className=" text-white uppercase duration-300
+          <div className="flex flex-col mt-14  text-left w-56     max-[600px]:items-center ">
+            <p className="font-bold text-white mb-4">SITE NAVIGATION</p>
+            <Link
+              to={"/aboutus"}
+              className=" text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
              hover:border-white  hover:text-white
             p-2
             "
-        >
-          About US
-        </Link>
-        <Link
-          to={"/plans"}
-          className="  text-white uppercase duration-300
+            >
+              About US
+            </Link>
+            <Link
+              to={"/plans"}
+              className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
              hover:border-white  hover:text-white
             p-2"
-        >
-          INVESTMENT PLANS
-        </Link>
+            >
+              INVESTMENT PLANS
+            </Link>
 
-        <Link
-          className="  text-white uppercase duration-300
+            <Link
+              className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
              hover:border-white  hover:text-white
             p-2"
-        >
-          rate US
-        </Link>
-        <Link
-        to={"/support"}
-          className="  text-white uppercase duration-300
+            >
+              rate US
+            </Link>
+            <Link
+              to={"/support"}
+              className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
              hover:border-white  hover:text-white
             p-2"
-        >
-          support
-        </Link>
-        <Link
-        to={"/faq"}
-          className="  text-white uppercase duration-300
+            >
+              support
+            </Link>
+            <Link
+              to={"/faq"}
+              className="  text-white uppercase duration-300
             max-[600px]:p-1 
             border-transparent border
              hover:border-white  hover:text-white
             p-2"
-        >
-          faq
-        </Link>
-      </div>
+            >
+              faq
+            </Link>
+          </div>
 
-      <div className="flex flex-col text-left w-56 mt-14     max-[600px]:items-center ">
-        <p className="font-bold text-white mb-4">LATEST NEWS</p>
+          <div className="flex flex-col text-left w-56 mt-14     max-[600px]:items-center ">
+            <p className="font-bold text-white mb-4">LATEST NEWS</p>
+          </div>
+        </div>
       </div>
-    </div>
-      </div>
-  
     </>
   );
 }
