@@ -123,11 +123,11 @@ function Home() {
     const diffInMs = new Date(endDate) - new Date(startDate);
     const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
     setdate(diffInDays);
-    return () => {
+    // return () => {
       getdata();
       get_recent_deposits();
       get_recent_payment();
-    };
+    // };
   }, []);
 
   const slides = [
