@@ -79,34 +79,46 @@ function Register() {
   //   }
   // };
   return (
-    <div     >
-    <NavBarAuth />
+    <div>
+      <NavBarAuth />
 
       <div className="flex justify-center flex-col items-center mt-48">
-        <div className=" flex justify-center flex-col items-center
-        ">
-          <h3 className="text-gray-400
+        <div
+          className=" flex justify-center flex-col items-center
+        "
+        >
+          <h3
+            className="text-gray-400
             max-[600px]:text-xs
-          ">FREEDOM BEGINS WHERE WORK FINISHES</h3>
-          <h2 className="text-4xl font-bold text-gray-600 mb-2 
+          "
+          >
+            FREEDOM BEGINS WHERE WORK FINISHES
+          </h3>
+          <h2
+            className="text-4xl font-bold text-gray-600 mb-2 
           max-[600px]:text-xl
-          ">
+          "
+          >
             REGISTRATION AT WHALE HUB
           </h2>
         </div>
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
       </div>
 
-      <div className="flex pt-20  justify-evenly max-w-screen
+      <div
+        className="flex pt-20  justify-evenly max-w-screen
       
-      ">
+      "
+      >
         <div className=" justify-between max-[600px]:hide ">
           <div className="flex flex-col items-start justify-center border-white  ">
             <div className="flex justify-center items-center mb-3">
               {/* <span><img src={require("../assets/icon-person (2).png")} alt="" /></span> */}
-              <div className=" p-4 mr-1 h-full
+              <div
+                className=" p-4 mr-1 h-full
               max-[600px]:p-0   
-              ">
+              "
+              >
                 <img src={icon} alt="" className="w-4 " />
               </div>
               <input
@@ -125,9 +137,11 @@ function Register() {
             </div>
 
             <div className="flex justify-center items-center mb-3">
-              <div className=" p-4 mr-1 h-full
+              <div
+                className=" p-4 mr-1 h-full
                      max-[600px]:p-0
-              ">
+              "
+              >
                 <img src={emailpic} alt="" className="w-4" />
               </div>
               <input
@@ -268,9 +282,11 @@ function Register() {
           </div>
         </div>
         <div className=" border-2 mr-44 ml-32 max-[600px]:hidden"></div>
-        <div className="   flex justify-center items-center flex-col
+        <div
+          className="   flex justify-center items-center flex-col
         max-[600px]:hidden
-        ">
+        "
+        >
           <img
             src={icon}
             width={100}

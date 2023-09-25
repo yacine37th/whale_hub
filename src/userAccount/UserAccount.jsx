@@ -7,13 +7,18 @@ import { doc, getDoc } from "firebase/firestore";
 import "./user.css";
 import { Link, useNavigate } from "react-router-dom";
 import arrow from "./img/images.png";
+import balance from './img/icon26.png'
+import invested from './img/icon27.png'
+import withdrawl from './img/icon28.png'
+
+// icon28.png
 
 function UserAccount() {
   const [user, setuser] = useState({});
-  const test =  {
-    "data": "8edded" ,
-    "user" : "ded", 
-  }
+  const test = {
+    data: "8edded",
+    user: "ded",
+  };
   const navigate = useNavigate();
 
   const getUser = async (docID) => {
@@ -53,14 +58,47 @@ function UserAccount() {
     <>
       <div className=" bg-gray-0 ">
         <NavBarAuth />
+         <div
+        className="absolute top-24 left-32 
+        max-[600px]:left-0 
+        max-[600px]:hidden
+        "
+      >
+        <Link
+        to={"/aboutus"}
+          className="p-10 text-black uppercase duration-300
+            max-[600px]:p-1 
+            "
+        >
+          About US
+        </Link>
+        <Link 
+        to={"/plans"}
+        className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          INVESTMENT PLANS
+        </Link>
 
+        <Link className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          rate US
+        </Link>
+        <Link
+        to={"/support"}
+        className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          support
+        </Link>
+        <Link className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          faq
+        </Link>
+      </div>
+        
         <div
-          className=" user flex jus w-screen absolute left-0 top-14 bg-gray-100  max-[600px]:pt-6
+          className=" user flex jus w-screen absolute left-0 top-44 bg-gray-100  max-[600px]:pt-6
 max-[600px]:top-20
         "
         >
+      
           <div
-            className="flex flex-col bg-white  m-8 h-56 rounded-lg p-4 max-[600px]:p-2  max-[600px]:m-0
+            className="flex flex-col bg-white  m-8 h-64 rounded-lg p-4 max-[600px]:p-2  max-[600px]:m-0
           "
           >
             <Link
@@ -77,21 +115,30 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300 "
               />
             </Link>
+            <Link 
+            to={"/profilSettings"}
+            className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
+              <p>USER SETTINGS</p>
+              <img
+                src={arrow}
+                width={8}
+                alt=""
+                className="group-hover:scale-150 group-hover:mr-2 duration-300"
+              />
+            </Link>
 
-
-            <a href="https://api.whatsapp.com/send?phone=+213674226441" 
-               target="_blank"
-             className="max-[600px]:text-xs max-[600px]:pt-4 max-[600px]:lowercase
-             flex items-center justify-between      group   mt-2  text-black"  
+            <a
+              href="https://api.whatsapp.com/send?phone=+213674226441"
+              target="_blank"
+              className="max-[600px]:text-xs max-[600px]:pt-4 max-[600px]:lowercase
+             flex items-center justify-between      group   mt-2  text-black"
             >
-
-            {/* <button
+              {/* <button
                 className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group       
                 border-none bg-transparent  focus:outline-none
                 flex items-center justify-between           text-black"
               > */}
-<p>                MAKE DEPOSIT
-</p>
+              <p> MAKE DEPOSIT</p>
               {/* </button> */}
               <img
                 src={arrow}
@@ -113,11 +160,6 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link> */}
-
-
-
-
-
 
             <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
               <p>Withdrawal</p>
@@ -152,7 +194,7 @@ max-[600px]:top-20
               <img
                 src={arrow}
                 width={8}
-                alt=""  
+                alt=""
                 className="group-hover:scale-150 "
               />
             </Link>
@@ -177,20 +219,19 @@ max-[600px]:top-20
             max-[600px]:hidden
             "
             >
-
-            <a href="https://api.whatsapp.com/send?phone=+213674226441" 
-               target="_blank"
-            >
-
-            <button
-                className=" w-44  p-2 backGround  border-white   text-white  text-base
+              <a
+                href="https://api.whatsapp.com/send?phone=+213674226441"
+                target="_blank"
+              >
+                <button
+                  className=" w-44  p-2 backGround  border-white   text-white  text-base
                hover:border-white rounded-2xl
               max-[600px]:text-xs  max-[600px]:p-0    max-[600px]:w-28 focus:outline-none
                "
-              >
-                MAKE DEPOSIT
-              </button>
-            </a>
+                >
+                  MAKE DEPOSIT
+                </button>
+              </a>
 
               <button
                 className="w-44   p-2 backGround  border-white   text-white  text-base
@@ -200,8 +241,32 @@ max-[600px]:top-20
               >
                 Withdrawal
               </button>
-            </div>
 
+
+            </div>
+            <div className="flex  justify-between mt-8 max-[600px]:hidden">
+              <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
+              max-[600px]:px-2
+              ">
+                <img src={balance} alt="" />
+                <p className="ml-4">BALANCE: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userAccountBalance}</p>
+
+              </div>
+              <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4">
+                <img src={invested} alt="" />
+                <p className="ml-4">INVESTED: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userAccountBalance}</p>
+
+              </div>
+
+              <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4">
+                <img src={withdrawl} alt="" />
+                <p className="ml-4">WITHDREW: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userAccountBalance}</p>
+
+              </div>
+            </div>
             <table id="customers" className="mt-14 max-[600px]:text-xs">
               <tr>
                 <td>User </td>

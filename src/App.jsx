@@ -14,6 +14,7 @@ import Support from './home/Support'
 import AboutUS from './home/AboutUS'
 import FAQ from './home/FAQ'
 import Deposit from './userAccount/Deposit'
+import UerSettings from './userAccount/UerSettings'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +27,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgetPassword" element={<ForgotPassword />} />
         <Route path="/profil" element={<UserAccount />} />
-        <Route path="/deposit" element={<Deposit />} />
+        <Route path="/profilSettings" element={<UerSettings />} />
+        {/* <Route path="/deposit" element={<Deposit />} /> */}
 
         <Route path="/plans" element={<Investment />} />
         <Route path="/support" element={<Support />} />
