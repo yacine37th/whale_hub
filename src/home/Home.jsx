@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import HomeNavBar from "./HomeNavBar";
-import logo from "./img/0_1_1694457176539.png";
+import logo from "./img/logo.png";
 import bg from "./img/photo-1596436889106-be35e843f974.jpg";
 import arrow from "./img/533-5339992_arrow-down-icon-gif-arrow-down-white-hd-removebg-preview.png";
 import facebook from "./img/facebook.png";
@@ -323,7 +323,7 @@ hover:border-white"
                 <img
                   src={tieicon}
                   alt=""
-                  width={width ? 70 : 50}
+                  width={width ? 80 : 50}
                   className="group-hover:rotate-0 "
                 />
               </div>
@@ -397,7 +397,7 @@ hover:border-white"
               width ? "p-8 " : "p-16"
             } max-[600px]:hidden`}
           >
-            <img src={logo} alt="" width={width ? 250 : 50} />
+            <img src={logo} alt="" width={width ? 50 : 250} />
           </div>
 
           {/* right side  */}
@@ -1094,7 +1094,7 @@ mt-16 w-full left-0
             <Link to={"/"} className="">
               <img
                 src={logo}
-                width={50}
+                width={80}
                 className=" max-w-full cursor-pointer"
                 // height={250}
                 alt=""

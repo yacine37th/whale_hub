@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./img/0_1_1694457176539.png";
+import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 import { Link } from "react-router-dom";
@@ -55,7 +55,7 @@ export default function NavBarAuth() {
         <Link to={"/"}>
           <img
             src={logo}
-            width={50}
+            width={80}
             className=" max-w-full cursor-pointer"
             // height={250}
             alt=""
@@ -66,7 +66,7 @@ export default function NavBarAuth() {
     (<div>
     <button
     onClick={()=>onLogout(auth)}
-      className="flex items-center background justify-between p-3 bg-transparent outline-none
+      className="flex items-center background justify-between p-7 bg-transparent outline-none
 focus:outline-none border-none header-button rounded-none  text-white hover:text-white
 "
     >
@@ -76,14 +76,16 @@ focus:outline-none border-none header-button rounded-none  text-white hover:text
     :  ( <div className="flex
    
    ">
-     <button
+     <a
+        href="https://telegram.me/WHALEHUBDZ2023"
+        target="_blank"
        className="flex items-center background justify-between p-4 bg-transparent outline-none
   focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
   "
      >
        <img src={telegram} className="mr-2" width={20} alt="" />{" "}
        <span className="text-white">Telegram</span>
-     </button>
+     </a>
      <button
        className="flex items-center background justify-between p-4 bg-transparent outline-none
   focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
@@ -94,7 +96,7 @@ focus:outline-none border-none header-button rounded-none  text-white hover:text
      </button>
      <Link to={"/register"} className="text-white hover:text-white ">
        <button
-         className="flex items-center background justify-between p-4 bg-transparent outline-none
+         className="flex items-center background justify-between p-7 bg-transparent outline-none
   focus:outline-none border-none header-button rounded-none
   "
        >
@@ -103,7 +105,7 @@ focus:outline-none border-none header-button rounded-none  text-white hover:text
      </Link>{" "}
      <Link to={"/login"} className="text-white hover:text-white ">
        <button
-         className="flex items-center background justify-between p-4 bg-transparent outline-none
+         className="flex items-center background justify-between p-7 bg-transparent outline-none
   focus:outline-none border-none header-button rounded-none
   "
        >

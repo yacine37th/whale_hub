@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./img/0_1_1694457176539.png";
+import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ mt-16 w-full left-0
         <Link to={"/"} className="">
           <img
             src={logo}
-            width={50}
+            width={80}
             className=" max-w-full cursor-pointer"
             // height={250}
             alt=""

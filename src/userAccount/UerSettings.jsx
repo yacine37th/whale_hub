@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import arrow from "./img/images.png";
 import NavBarAuth from "../auth/NavBarAuth";
-import logo from "../home/img/0_1_1694457176539.png";
+import logo from "../home/img/logo.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../firebase/firebase";
 import { doc, updateDoc } from "firebase/firestore";

@@ -9,7 +9,7 @@ import emailpic from "./img/email.png";
 import passwordicon from "./img/password.png";
 import bitcoinicon from "./img/bitcoin.png";
 import baridimob from "./img/baridimob.png";
-import logo from "./img/0_1_1694457176539.png";
+import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 
