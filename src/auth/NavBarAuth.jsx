@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { onLogout } from "../home/functions";
 
 export default function NavBarAuth() {
   const [isLogin, setisLogin] = useState(false  );
+  const navigate = useNavigate()
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -65,7 +66,9 @@ export default function NavBarAuth() {
     {isLogin ?
     (<div>
     <button
-    onClick={()=>onLogout(auth)}
+    onClick={()=>{onLogout(auth)
+      navigate('/',{replace : true})
+    }}
       className="flex items-center background justify-between p-7 bg-transparent outline-none
 focus:outline-none border-none header-button rounded-none  text-white hover:text-white
 "
@@ -83,17 +86,20 @@ focus:outline-none border-none header-button rounded-none  text-white hover:text
   focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
   "
      >
-       <img src={telegram} className="mr-2" width={20} alt="" />{" "}
+       <img src={telegram} className="mr-2" width={25} alt="" />{" "}
        <span className="text-white">Telegram</span>
      </a>
-     <button
+     {/* https://web.facebook.com/profile.php?id=61551873030825&_rdc=1&_rdr */}
+     <a
+         href="https://web.facebook.com/profile.php?id=61551873030825&_rdc=1&_rdr"
+         target="_blank"
        className="flex items-center background justify-between p-4 bg-transparent outline-none
   focus:outline-none border-none header-button rounded-none    max-[600px]:hidden
   "
      >
-       <img src={facebook} className="mr-2" width={20} alt="" />{" "}
+       <img src={facebook} className="mr-2" width={25} alt="" />{" "}
        <span className="text-white">Facebook</span>
-     </button>
+     </a>
      <Link to={"/register"} className="text-white hover:text-white ">
        <button
          className="flex items-center background justify-between p-7 bg-transparent outline-none

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { auth } from "../firebase/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -7,15 +7,13 @@ import { toast } from "react-toastify";
 import { forgotPassword } from "./function";
 import NavBarAuth from "./NavBarAuth";
 
-
-
 function ForgotPassword() {
   const [email, setemail] = useState("");
-  
+  const navigate = useNavigate();
 
   return (
     <>
-<NavBarAuth />
+      <NavBarAuth />
 
       <div className="bg-red-700 flex-1 ">
         <div className="flex justify-center items-center   ">
@@ -42,9 +40,11 @@ function ForgotPassword() {
                 <p className="text-red-700 text-xs flex items-start"></p>
               </div>
 
-              
               <button
-                onClick={() => forgotPassword(auth, email)}
+                onClick={() => {
+                  forgotPassword(auth, email);
+                  navigate("/login", { replace: true });
+                }}
                 type="submit"
                 className="
                   w-60 p-4 button-background border-white   text-white  text-base
@@ -54,9 +54,6 @@ function ForgotPassword() {
                 ENTER
               </button>
             </div>
-           
-
-            
           </div>
         </div>
       </div>

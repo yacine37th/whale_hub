@@ -44,20 +44,23 @@ function HomeNavBar() {
    href="https://telegram.me/WHALEHUBDZ2023"
    target="_blank"
           >
-            <img src={telegram} className="mr-2" width={15} alt="" />{" "}
+            <img src={telegram} className="mr-2" width={25} alt="" />{" "}
             <p 
             className="text-white max-[600px]:text-xs ">Telegram</p>
           </a>
-        <Link>
+        <a 
+          href="https://web.facebook.com/profile.php?id=61551873030825&_rdc=1&_rdr"
+          target="_blank"
+        >
           <button
             className="flex items-center background justify-between p-3 bg-transparent outline-none
    focus:outline-none border-none header-button rounded-none 
    "
           >
-            <img src={facebook} className="mr-2" width={15} alt="" />{" "}
+            <img src={facebook} className="mr-2" width={25} alt="" />{" "}
             <span className="text-white max-[600px]:text-xs">Facebook</span>
           </button>
-        </Link>
+        </a>
       </div>
       {isLogin ? (
         <div className="flex">
@@ -71,7 +74,11 @@ function HomeNavBar() {
             <span className=" max-[600px]:text-xs">ACCOUNT</span>
           </Link>
           <button
-          onClick={()=>onLogout(auth)}
+          onClick={()=>{onLogout(auth)
+            window.location.reload(false);
+          }
+          
+          }
             className="flex items-center background justify-between p-3 bg-transparent outline-none
    focus:outline-none border-none header-button rounded-none  text-white hover:text-white
    "

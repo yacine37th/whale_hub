@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { auth, db } from "../firebase/firebase";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import "./index.css";
-import { register } from "./function";
 import icon from "./img/icon-person.png";
 import emailpic from "./img/email.png";
 import passwordicon from "./img/password.png";
@@ -15,10 +14,12 @@ import telegram from "./img/telegram.png";
 
 // 0_1_1694457176539.png
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBarAuth from "./NavBarAuth";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [fullName, setfullName] = useState("");
   const [username, setusername] = useState("");
   const [betcoinAccount, setBetcoinAccount] = useState("");
@@ -26,6 +27,72 @@ function Register() {
   const [password, setpassword] = useState("");
   const [Baridymob, setBaridymob] = useState("");
   const [usdt, setusdt] = useState("");
+  const register = async (
+    au,
+    em,
+    pa,
+    fullName,
+    username,
+    betcoinAccount,
+    usdt,
+    Baridymob
+  ) => {
+    if (em === "" || pa === "") {
+      alert("Please Enter Email and Password");
+    } else {
+      var currentdate = new Date(); 
+      var datetime =  + currentdate.getDate() + "/"
+      + (currentdate.getMonth()+1)  + "/" 
+      + currentdate.getFullYear()
+  
+      console.log("datetime");
+      console.log(datetime);
+      await createUserWithEmailAndPassword(au, em, pa)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user.uid);
+          try {
+            setDoc(doc(db, "users", user.uid), {
+              userFullName: fullName,
+              userName: username,
+              userBitcoinAccount: betcoinAccount,
+              userUSDWallet: usdt,
+              userBaridyMob: Baridymob,
+              userEmail: em,
+              userPassword: pa,
+              userID: user.uid,
+              userRegistrationDate : datetime,
+              userLastAccess : datetime,
+              userAccountBalance : 0.00,
+              userEarnedTotal: 0.00,
+              userPendingWithdrawal : 0.00,
+              userWithdrawalTotal : 0.00,
+              userActiveDeposit :  0.00,
+            });
+            //      const docRef =  addDoc( user.uid, collection(db, "users"), {
+            //   email : email,
+            //   userid : auth.currentUser.uid
+            // });
+            // console.log("Document written with ID: ", docRef.id);
+            navigate("/login", { replace: true });
+
+          } catch (error) {}
+          alert("Account has Been created");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          console.log(errorMessage);
+          console.log(error.code);
+          if (error.code === "auth/email-already-in-use") {
+            alert("This Email is already in use");
+          }
+        });
+    }
+  };
   // setusdt
   // const register = async (au, em, pa) => {
   //   if (em === "" || pa === "" || pa.lenght < 8) {
@@ -259,7 +326,7 @@ function Register() {
             </div>
 
             <button
-              onClick={() =>
+              onClick={() => {
                 register(
                   auth,
                   email,
@@ -269,8 +336,8 @@ function Register() {
                   betcoinAccount,
                   usdt,
                   Baridymob
-                )
-              }
+                );
+              }}
               type="submit"
               className="
                   w-full p-4 button-background-register border-white   text-white  text-base

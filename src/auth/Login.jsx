@@ -43,7 +43,7 @@ function Login() {
             userLastAccess: datetime,
           });
           alert("Login Success");
-          navigate("/profil");
+          navigate("/profil", {replace : true});
           console.log("deded");
         })
         .catch((error) => {

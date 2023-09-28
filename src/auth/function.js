@@ -109,7 +109,7 @@ export const forgotPassword = async (au, em) => {
       const res = await sendPasswordResetEmail(au, em);
       console.log(res);
       //  toast("Wow so easy!");
-      alert(`An Email Has been sent to : ${em}`);
+      alert(`An Email Has been sent to : ${em} Please Check your email.`);
     }
   } catch (error) {
     if (error.code === "auth/invalid-email") {
