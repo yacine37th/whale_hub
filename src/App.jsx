@@ -25,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/forgetPassword" element={<ForgotPassword />} />
         <Route path="/profil" element={<UserAccount />} />
         <Route path="/profilSettings" element={<UerSettings />} />
@@ -33,6 +34,7 @@ function App() {
         <Route path="/plans" element={<Investment />} />
         <Route path="/support" element={<Support />} />
         <Route path="/aboutus" element={<AboutUS />} />
+        
         <Route path="/faq" element={<FAQ />} />
 
 
