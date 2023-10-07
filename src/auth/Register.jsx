@@ -69,6 +69,7 @@ function Register() {
               userPendingWithdrawal : 0.00,
               userWithdrawalTotal : 0.00,
               userActiveDeposit :  0.00,
+              userInvested : 0.00,
             });
             //      const docRef =  addDoc( user.uid, collection(db, "users"), {
             //   email : email,

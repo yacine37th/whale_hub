@@ -256,14 +256,14 @@ max-[600px]:top-20
               <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4">
                 <img src={invested} alt="" />
                 <p className="ml-4">INVESTED: </p>
-                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userAccountBalance}</p>
+                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userInvested}</p>
 
               </div>
 
               <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4">
                 <img src={withdrawl} alt="" />
                 <p className="ml-4">WITHDREW: </p>
-                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userAccountBalance}</p>
+                <p className="ml-4 text-blue-800 font-bold text-xl">$ {user.userWithdrawalTotal}</p>
 
               </div>
             </div>
