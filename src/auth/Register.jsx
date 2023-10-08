@@ -16,6 +16,7 @@ import telegram from "./img/telegram.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import NavBarAuth from "./NavBarAuth";
+import spinner from "../assets/images/output-onlinegiftools.gif";
 
 function Register() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function Register() {
   const [password, setpassword] = useState("");
   const [Baridymob, setBaridymob] = useState("");
   const [usdt, setusdt] = useState("");
+  const [loading, setloading] = useState(false);
   const register = async (
     au,
     em,
@@ -40,58 +42,66 @@ function Register() {
     if (em === "" || pa === "") {
       alert("Please Enter Email and Password");
     } else {
-      var currentdate = new Date(); 
-      var datetime =  + currentdate.getDate() + "/"
-      + (currentdate.getMonth()+1)  + "/" 
-      + currentdate.getFullYear()
-  
-      console.log("datetime");
-      console.log(datetime);
-      await createUserWithEmailAndPassword(au, em, pa)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user.uid);
-          try {
-            setDoc(doc(db, "users", user.uid), {
-              userFullName: fullName,
-              userName: username,
-              userBitcoinAccount: betcoinAccount,
-              userUSDWallet: usdt,
-              userBaridyMob: Baridymob,
-              userEmail: em,
-              userPassword: pa,
-              userID: user.uid,
-              userRegistrationDate : datetime,
-              userLastAccess : datetime,
-              userAccountBalance : 0.00,
-              userEarnedTotal: 0.00,
-              userPendingWithdrawal : 0.00,
-              userWithdrawalTotal : 0.00,
-              userActiveDeposit :  0.00,
-              userInvested : 0.00,
-            });
-            //      const docRef =  addDoc( user.uid, collection(db, "users"), {
-            //   email : email,
-            //   userid : auth.currentUser.uid
-            // });
-            // console.log("Document written with ID: ", docRef.id);
-            navigate("/login", { replace: true });
+      try {
+        setloading(true);
+        var currentdate = new Date();
+        var datetime =
+          +currentdate.getDate() +
+          "/" +
+          (currentdate.getMonth() + 1) +
+          "/" +
+          currentdate.getFullYear();
 
-          } catch (error) {}
-          alert("Account has Been created");
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          console.log(errorMessage);
-          console.log(error.code);
-          if (error.code === "auth/email-already-in-use") {
-            alert("This Email is already in use");
-          }
-        });
+        console.log("datetime");
+        console.log(datetime);
+        await createUserWithEmailAndPassword(au, em, pa)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user.uid);
+            try {
+              setDoc(doc(db, "users", user.uid), {
+                userFullName: fullName,
+                userName: username,
+                userBitcoinAccount: betcoinAccount,
+                userUSDWallet: usdt,
+                userBaridyMob: Baridymob,
+                userEmail: em,
+                userPassword: pa,
+                userID: user.uid,
+                userRegistrationDate: datetime,
+                userLastAccess: datetime,
+                userAccountBalance: 0.0,
+                userEarnedTotal: 0.0,
+                userPendingWithdrawal: 0.0,
+                userWithdrawalTotal: 0.0,
+                userActiveDeposit: 0.0,
+                userInvested: 0.0,
+              });
+              //      const docRef =  addDoc( user.uid, collection(db, "users"), {
+              //   email : email,
+              //   userid : auth.currentUser.uid
+              // });
+              // console.log("Document written with ID: ", docRef.id);
+              navigate("/login", { replace: true });
+            } catch (error) {}
+            alert("Account has Been created");
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            console.log(errorMessage);
+            console.log(error.code);
+            if (error.code === "auth/email-already-in-use") {
+              alert("This Email is already in use");
+            }
+          });
+      } catch (error) {
+      } finally {
+        setloading(false);
+      }
     }
   };
   // setusdt
@@ -345,7 +355,13 @@ function Register() {
                   rounded-none  hover:border-white bg-blue-900
                   "
             >
-              ENTER
+              {loading ? (
+                <div className=" flex justify-center items-center  ">
+                  <img src={spinner} alt="" srcset=""  className="w-20"/>
+                </div>
+              ) : (
+                <p>ENTER</p>
+              )}
             </button>
           </div>
         </div>
