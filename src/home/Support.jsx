@@ -9,6 +9,7 @@ import emailjs from "@emailjs/browser";
 function Support() {
   var width = false;
   const form = useRef();
+  const first = useRef();
 
   useEffect(() => {
     if (window.screen.width <= "600") {
@@ -19,17 +20,71 @@ function Support() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_4pho89o', 'template_ebk0dtp', form.current, "vi6_bsb5AMeM-KTqK")
-      .then((result) => {
+    console.log("====================================");
+    console.log(first.current);
+    console.log("====================================");
+
+    emailjs
+      .sendForm(
+        "service_4pho89o",
+        "template_ebk0dtp",
+        first.current,
+        "vi6_bsb5AMeM-KTqK"
+      )
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
-      });
+        }
+      );
   };
+
   return (
     <div className="bg-gray-100 flex-1 rounded-2xl">
       <NavBarAuth />
-
+      <form
+        ref={first}
+        className=" flex-col flex-1 ml-48 max-[600px]:ml-0 hidden
+   "
+      >
+        {/* <label>Name</label> */}
+        <input
+          type="text"
+          name="user_name"
+          className="border border-black p-4 m-2 focus:outline-none
+        max-[600px]:p-1      max-[600px]:w-56   
+       "
+          placeholder="Full Name"
+          value={"test"}
+        />{" "}
+        {/* <label>Email</label> */}
+        {/* <label>Email</label> */}
+        <input
+          type="email"
+          name="user_email"
+          className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
+          placeholder="Email"
+          value={"nstitouah@gmail.com"}
+        />{" "}
+        {/* <label>Message</label> */}
+        <textarea
+          id="txtid"
+          name="message"
+          rows="4"
+          cols="50"
+          maxlength="200"
+          placeholder="your message ..."
+          value={"nstitouah@gmail.comsdddddddddddd"}
+          className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
+        />
+        <input
+          type="submit"
+          value="Send"
+          className="bg-blue-800 p-5 text-white w-full mt-4 "
+        />
+      </form>
       <div
         className="absolute top-24 left-32 
       max-[600px]:left-0 
@@ -78,7 +133,7 @@ function Support() {
           </div>
 
           <div
-            className="flex justify- items-center mt-9
+            className="flex justify-between items-center mt-9
           max-[600px]:p-2
           "
           >
@@ -119,43 +174,75 @@ function Support() {
               </div>
             </div>
 
-            <div
-              className="flex flex-col flex-1 ml-48 max-[600px]:ml-0
-            
-            "
-            >
-              <form ref={form} onSubmit={sendEmail} className="flex flex-col flex-1 ml-48 max-[600px]:ml-0
-            ">
-                {/* <label>Name</label> */}
+            <div className="flex flex-col flex-1 ml-48 max-[600px]:ml-0">
+              <form
+                action=""
+                className="flex flex-col justify-center items-center "
+              >
                 <input
-                type="text" name="user_name" 
+                  type="text"
+                  name="user_name"
+                  className="border border-black p-4 m-2 focus:outline-none
+                 max-[600px]:p-1      max-[600px]:w-56   w-full
+                "
+                  placeholder="Full Name"
+                />{" "}
+                <input
+                  type="email"
+                  name="user_email"
+                  className="border border-black p-4 m-2 focus:outline-none      w-full          max-[600px]:p-1      max-[600px]:w-56   "
+                  placeholder="Email"
+                />{" "}
+                <textarea
+                  id="txtid"
+                  name="message"
+                  rows="4"
+                  cols="50"
+                  maxlength="200"
+                  placeholder="your message ..."
+                  className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
+                />
+                <input
+                  type="submit"
+                  value="SEND"
+                  className="bg-blue-800 p-4 text-white w-full mt-4 rounded-xl font-bold"
+                />
+              </form>
+              {/* <form
+                ref={form}
+                onSubmit={sendEmail}
+                className="flex flex-col flex-1 ml-48 max-[600px]:ml-0
+            "
+              >
+                <input
+                  type="text"
+                  name="user_name"
                   className="border border-black p-4 m-2 focus:outline-none
                  max-[600px]:p-1      max-[600px]:w-56   
                 "
                   placeholder="Full Name"
                 />{" "}
-                {/* <label>Email</label> */}
-                <label>Email</label>
-
                 <input
-                type="email" name="user_email" 
+                  type="email"
+                  name="user_email"
                   className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
-                  
                   placeholder="Email"
                 />{" "}
-                {/* <label>Message</label> */}
                 <textarea
                   id="txtid"
-                  name="message" 
+                  name="message"
                   rows="4"
                   cols="50"
                   maxlength="200"
                   placeholder="your message ..."
                   className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
                 />
-                <input type="submit" value="Send"  className="bg-blue-800 p-5 text-white w-full mt-4 "/>
-              </form>
-
+                <input
+                  type="submit"
+                  value="Send"
+                  className="bg-blue-800 p-5 text-white w-full mt-4 "
+                />
+              </form> */}
               {/* <input
                 type="text"
                 className="border border-black p-4 m-2 focus:outline-none
