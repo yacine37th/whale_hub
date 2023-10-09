@@ -10,6 +10,7 @@ import arrow from "./img/images.png";
 import balance from './img/icon26.png'
 import invested from './img/icon27.png'
 import withdrawl from './img/icon28.png'
+import { sendEmail } from "../emailService/SendEmailFunction";
 
 // icon28.png
 
@@ -234,6 +235,7 @@ max-[600px]:top-20
               </a>
 
               <button
+              onClick={sendEmail}
                 className="w-44   p-2 backGround  border-white   text-white  text-base
               rounded-2xl  hover:border-white
               max-[600px]:w-20 max-[600px]:text-xs  focus:outline-none uppercase

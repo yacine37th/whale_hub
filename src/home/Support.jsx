@@ -1,17 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import BottomNav from "../auth/BottomNav";
 import NavBarAuth from "../auth/NavBarAuth";
 import { Link } from "react-router-dom";
 import logo from "./img/logo.png";
+// import { sendEmail } from "../emailService/SendEmailFunction";
+import emailjs from "@emailjs/browser";
 
 function Support() {
   var width = false;
+  const form = useRef();
 
   useEffect(() => {
     if (window.screen.width <= "600") {
       width = true;
     }
   }, []);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_4pho89o', 'template_ebk0dtp', form.current, "vi6_bsb5AMeM-KTqK")
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
   return (
     <div className="bg-gray-100 flex-1 rounded-2xl">
       <NavBarAuth />
@@ -97,11 +111,8 @@ function Support() {
                 <div>
                   <p>
                     Telegram Chat:{" "}
-                    <a
-                      href="https://t.me/whale_hub2023"
-                      target="_blank"
-                    >
-                    Whale_Hub2023
+                    <a href="https://t.me/whale_hub2023" target="_blank">
+                      Whale_Hub2023
                     </a>
                   </p>
                 </div>
@@ -113,13 +124,45 @@ function Support() {
             
             "
             >
-              <input
+              <form ref={form} onSubmit={sendEmail} className="flex flex-col flex-1 ml-48 max-[600px]:ml-0
+            ">
+                {/* <label>Name</label> */}
+                <input
+                type="text" name="user_name" 
+                  className="border border-black p-4 m-2 focus:outline-none
+                 max-[600px]:p-1      max-[600px]:w-56   
+                "
+                  placeholder="Full Name"
+                />{" "}
+                {/* <label>Email</label> */}
+                <label>Email</label>
+
+                <input
+                type="email" name="user_email" 
+                  className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
+                  
+                  placeholder="Email"
+                />{" "}
+                {/* <label>Message</label> */}
+                <textarea
+                  id="txtid"
+                  name="message" 
+                  rows="4"
+                  cols="50"
+                  maxlength="200"
+                  placeholder="your message ..."
+                  className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
+                />
+                <input type="submit" value="Send"  className="bg-blue-800 p-5 text-white w-full mt-4 "/>
+              </form>
+
+              {/* <input
                 type="text"
                 className="border border-black p-4 m-2 focus:outline-none
                  max-[600px]:p-1      max-[600px]:w-56   
                 "
                 name=""
-                id=""
+                
                 placeholder="Full Name"
               />
               <input
@@ -137,10 +180,10 @@ function Support() {
                 maxlength="200"
                 placeholder=""
                 className="border border-black p-4 m-2 focus:outline-none             max-[600px]:p-1      max-[600px]:w-56   "
-              />
-              <button className="backGround text-white w-full mt-4">
+              /> */}
+              {/* <button className="backGround text-white w-full mt-4">
                 SEND
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
