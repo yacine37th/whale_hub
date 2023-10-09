@@ -176,6 +176,8 @@ function Support() {
 
             <div className="flex flex-col flex-1 ml-48 max-[600px]:ml-0">
               <form
+                              ref={form}
+                              onSubmit={sendEmail}
                 action=""
                 className="flex flex-col justify-center items-center "
               >
