@@ -11,6 +11,7 @@ import baridimob from "./img/baridimob.png";
 import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
+import phnoe from "./img/phone.png";
 
 // 0_1_1694457176539.png
 
@@ -23,6 +24,7 @@ function Register() {
 
   const [fullName, setfullName] = useState("");
   const [username, setusername] = useState("");
+  const [phone, setphone] = useState("");
   const [betcoinAccount, setBetcoinAccount] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -63,6 +65,7 @@ function Register() {
               setDoc(doc(db, "users", user.uid), {
                 userFullName: fullName,
                 userName: username,
+                userPhoneNumber: phone,
                 userBitcoinAccount: betcoinAccount,
                 userUSDWallet: usdt,
                 userBaridyMob: Baridymob,
@@ -251,6 +254,25 @@ function Register() {
                 placeholder="Your Username"
                 onChange={(e) => {
                   setusername(e.target.value);
+                }}
+              />
+              <p className="text-red-700 text-xs flex items-start"></p>
+            </div>
+
+            <div className="flex justify-center items-center mb-3">
+              <div className=" p-4 mr-1 h-full max-[600px]:p-0">
+                <img src={phnoe} alt="" className="w-4" />
+              </div>
+              <input
+                className={`
+                w-80 p-4 text-black  border-2 border-gray outline-none  max-[600px]:w-72
+      `}
+                type="tel"
+                name="tel"
+                id="tel"
+                placeholder="Your Phone number"
+                onChange={(e) => {
+                  setphone(e.target.value);
                 }}
               />
               <p className="text-red-700 text-xs flex items-start"></p>

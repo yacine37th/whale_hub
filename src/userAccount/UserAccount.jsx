@@ -52,7 +52,7 @@ function UserAccount() {
       }
     });
   }, []);
- 
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -78,7 +78,7 @@ function UserAccount() {
   };
   return (
     <>
-      {/* <form
+      <form
         action=""
         className="flex-col justify-center items-center hidden"
         ref={withdraw}
@@ -91,16 +91,15 @@ function UserAccount() {
                  max-[600px]:p-1      max-[600px]:w-56   w-full
                 "
           placeholder="Full Name"
-          // value={user?.userFullName}
-          value={"for4funn@gmail.com"}
+          value={user?.userFullName}
         />{" "}
         <input
           type="email"
           name="user_email"
           className="border border-black p-4 m-2 focus:outline-none      w-full          max-[600px]:p-1      max-[600px]:w-56   "
           placeholder="Email"
-          // value={user?.userEmail}
-          value={"nstitouah@gmail.com"}
+          value={user?.userEmail}
+          // value={"nstitouah@gmail.com"}
         />{" "}
         <textarea
           value={"Withraw Request"}
@@ -117,7 +116,7 @@ function UserAccount() {
           value="SEND"
           className="bg-blue-800 p-4 text-white w-full mt-4 rounded-xl font-bold"
         />
-      </form> */}
+      </form>
 
       <div className=" bg-gray-0 ">
         <NavBarAuth />
