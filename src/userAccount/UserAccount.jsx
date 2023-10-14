@@ -11,11 +11,15 @@ import balance from "./img/icon26.png";
 import invested from "./img/icon27.png";
 import withdrawl from "./img/icon28.png";
 import emailjs from "@emailjs/browser";
+import spinner from "../assets/images/output-onlinegiftools.gif";
+
 
 // icon28.png
 
 function UserAccount() {
   const [user, setuser] = useState({});
+  const [loading, setloading] = useState(false);
+
   const withdraw = useRef();
 
   const navigate = useNavigate();
@@ -59,22 +63,30 @@ function UserAccount() {
     console.log("====================================");
     console.log(withdraw.current);
     console.log("====================================");
+    try {
+  setloading(true)
+      emailjs
+        .sendForm(
+          "service_4pho89o",
+          "template_ebk0dtp",
+          withdraw.current,
+          "vi6_bsb5AMeM-KTqK"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+        alert("An Email has been sent , Please wait till the admin contact you")
+    } catch (error) {
 
-    emailjs
-      .sendForm(
-        "service_4pho89o",
-        "template_ebk0dtp",
-        withdraw.current,
-        "vi6_bsb5AMeM-KTqK"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    }finally {
+      setloading(false)
+
+    }
   };
   return (
     <>
@@ -225,8 +237,16 @@ max-[600px]:top-20
               />
             </Link> */}
 
-            <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
-              <p>Withdrawal</p>
+            <Link 
+            onClick={sendEmail}
+            className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
+            {loading ? (
+                <div className=" flex justify-center items-center  ">
+                  <img src={spinner} alt="" srcset=""  className="w-10"/>
+                </div>
+              ) : (
+                <p>Withdrawal</p>
+              )}
               <img
                 src={arrow}
                 width={8}
@@ -304,7 +324,14 @@ max-[600px]:top-20
               max-[600px]:w-20 max-[600px]:text-xs  focus:outline-none uppercase
               "
               >
-                Withdrawal
+                  {loading ? (
+                <div className=" flex justify-center items-center  ">
+                  <img src={spinner} alt="" srcset=""  className="w-10"/>
+                </div>
+              ) : (
+                <p>Withdrawal</p>
+              )}
+                
               </button>
             </div>
             <div className="flex  justify-between mt-8 max-[600px]:hidden">
