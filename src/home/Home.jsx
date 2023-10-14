@@ -23,7 +23,7 @@ import arrow1 from "./img/arrow1.png";
 import icon13 from "./img/icon13.png";
 import icon15 from "./img/icon15.png";
 import table from "./img/1008.gif";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import BottomNav from "../auth/BottomNav";
@@ -69,10 +69,10 @@ function Home() {
       // userArray.push(doc.data())
     });
     setdata(userArray);
-    console.log("====================================");
-    console.log(userArray);
+    // console.log("====================================");
+    // console.log(userArray);
     // console.log(userArray.length);
-    console.log("====================================");
+    // console.log("====================================");
   };
 
   const get_recent_deposits = async () => {
@@ -170,7 +170,6 @@ function Home() {
   return (
     <>
       <div
-        // className=" flex justify-center items-center back h-screen"
         className="back flex flex-col items-center absolute top-0 left-0 h-full w-full "
       >
         <HomeNavBar />
@@ -291,18 +290,13 @@ hover:border-white"
           </div>
           <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
         </div>
-        {/* 
-
-
-
-*/}
+  
         <div
           className="flex justify-evenly  items-center flex-row mt-14 
         max-[600px]:flex-col max-[600px]:mt-20 mb-14
         "
         >
           <div className=" flex flex-col justify-end items-end  max-[600px]:items-center max-[600px]:justify-center  ">
-            {/*  */}
             <div
               className="flex justify-center items-center flex-row 
             max-[600px]:flex-col-reverse 
@@ -329,7 +323,7 @@ hover:border-white"
               </div>
             </div>
 
-            {/* ddededokoed */}
+
             <div
               className="flex justify-center items-center flex-row 
             mr-20
@@ -490,7 +484,6 @@ hover:border-white"
           </div>
         </div>
 
-        {/* //////////////////////////////////// OUR INVESTMENT PLANS */}
 
         <div className="back-inside w-full">
           <div
@@ -499,9 +492,7 @@ hover:border-white"
         "
           >
             <div className=" flex justify-center flex-col items-center">
-              {/* <h3 className="text-white italic    max-[600px]:text-xs ">
-              THE DREAM BEGINS WITH A SEARCH OF CAPABILITY
-            </h3> */}
+              
               <h2 className="text-5xl font-bold text-white mb-2      max-[600px]:text-xl">
                 OUR INVESTMENT PLANS
               </h2>
@@ -515,7 +506,6 @@ hover:border-white"
 
             <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
 
-            {/* ////////////////////// TABLE  */}
             <div
               className="text-white mt-9  mb-12
                         max-[600px]:overflow-x-scroll max-[600px]:w-full max-[600px]:px-4 
@@ -670,36 +660,7 @@ hover:border-white"
               </ul>
             </div>
 
-            {/* /////////////////carousel  */}
-
-            {/* <div className="min-[601px]:hidden max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
-              <div
-                style={{
-                  backgroundImage: `url(${slides[currentIndex].url})`,
-                }}
-                className="w-auto h-full rounded-2xl bg-center bg-cover duration-500 "
-              ></div>
-              <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-                <BsChevronCompactLeft onClick={prevSlide} size={30} />
-              </div>
-     
-              <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-                <BsChevronCompactRight onClick={nextSlide} size={30} />
-              </div>
-              <div className="flex top-4 justify-center py-2 ">
-                {slides.map((slide, slideIndex) => (
-                  <div
-                    key={slideIndex}
-                    onClick={() => goToSlide(slideIndex)}
-                    className="text-2xl cursor-pointer  text-white"
-                  >
-                    <RxDotFilled />
-                  </div>
-                ))}
-              </div>
-            </div> */}
-
-            {/* <Carousel data={slides} /> */}
+           
           </div>
         </div>
 
@@ -719,7 +680,6 @@ hover:border-white"
           <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
         </div>
 
-        {/* ///////////////arrow */}
         <div className="flex justify-center items-center max-[600px]:flex-col">
           <div className="flex flex-col justify-center items-center mt-16">
             <div
@@ -889,7 +849,6 @@ hover:border-white"
           </div>
         </div>
 
-        {/* ////////////// projects statistics */}
         <div className="w-ful ">
           <div
             className="flex justify-center flex-col items-center mt-32
@@ -1011,7 +970,6 @@ hover:border-white"
           </ul>
         </div>
 
-        {/* ////////////////////Affiliation program */}
 
         <div className="back5 mt-28 w-full text-white">
           <div className="w-ful ">
@@ -1076,7 +1034,6 @@ max-[600px]:text-2xl mt-8  mb-20
 
         <div className="border-b-4 w-36 text-center justify-center flex items-center"></div>
 
-        {/* buttom */}
 
         <div
           className="background    h-80 px-44 flex justify-between items-start 

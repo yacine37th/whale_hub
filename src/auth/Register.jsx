@@ -12,6 +12,7 @@ import logo from "./img/logo.png";
 import facebook from "./img/facebook.png";
 import telegram from "./img/telegram.png";
 import phnoe from "./img/phone.png";
+import money from "./img/money.png";
 
 // 0_1_1694457176539.png
 
@@ -30,6 +31,7 @@ function Register() {
   const [password, setpassword] = useState("");
   const [Baridymob, setBaridymob] = useState("");
   const [usdt, setusdt] = useState("");
+  const [amountInvest, setamountInvest] = useState(0);
   const [loading, setloading] = useState(false);
   const register = async (
     au,
@@ -63,6 +65,7 @@ function Register() {
             console.log(user.uid);
             try {
               setDoc(doc(db, "users", user.uid), {
+                userIsAccepted: false,
                 userFullName: fullName,
                 userName: username,
                 userPhoneNumber: phone,
@@ -79,7 +82,7 @@ function Register() {
                 userPendingWithdrawal: 0.0,
                 userWithdrawalTotal: 0.0,
                 userActiveDeposit: 0.0,
-                userInvested: 0.0,
+                userInvested: amountInvest,
               });
               //      const docRef =  addDoc( user.uid, collection(db, "users"), {
               //   email : email,
@@ -357,6 +360,28 @@ function Register() {
               />
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
+
+            <div className="flex justify-center items-center mb-3">
+              <div className=" p-4 mr-1 h-full        max-[600px]:p-0">
+                <img src={money} alt="" className="w-4" />
+              </div>
+              {/*  */}
+              <input
+                className={`
+                w-80 p-4 text-black  border-2 border-gray outline-none  max-[600px]:w-72
+      `}
+                type="number"
+                name="Baridymob"
+                id="Baridymob"
+                placeholder="Your amount of investment"
+                onChange={(e) => {
+                  setamountInvest(e.target.value);
+                }}
+              />
+              <p className="text-red-700 text-xs flex items-start"></p>
+            </div>
+
+
 
             <button
               onClick={() => {
