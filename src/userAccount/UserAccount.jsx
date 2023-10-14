@@ -13,7 +13,6 @@ import withdrawl from "./img/icon28.png";
 import emailjs from "@emailjs/browser";
 import spinner from "../assets/images/output-onlinegiftools.gif";
 
-
 // icon28.png
 
 function UserAccount() {
@@ -64,7 +63,7 @@ function UserAccount() {
     console.log(withdraw.current);
     console.log("====================================");
     try {
-  setloading(true)
+      setloading(true);
       emailjs
         .sendForm(
           "service_4pho89o",
@@ -80,12 +79,10 @@ function UserAccount() {
             console.log(error.text);
           }
         );
-        alert("An Email has been sent , Please wait till the admin contact you")
+      alert("An Email has been sent , Please wait till the admin contact you");
     } catch (error) {
-
-    }finally {
-      setloading(false)
-
+    } finally {
+      setloading(false);
     }
   };
   return (
@@ -113,7 +110,6 @@ function UserAccount() {
           value={user?.userEmail}
           // value={"nstitouah@gmail.com"}
         />{" "}
-
         <input
           value={user?.userUSDWallet}
           id="txtid"
@@ -124,8 +120,7 @@ function UserAccount() {
           placeholder="your message ..."
           className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
         />
-
-<input
+        <input
           value={user?.userBaridyMob}
           id="txtid"
           name="userBaridyMob"
@@ -135,9 +130,8 @@ function UserAccount() {
           placeholder="your message ..."
           className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
         />
-
         {/* userBaridyMob
- */}
+         */}
         <input
           type="submit"
           value="SEND"
@@ -252,20 +246,16 @@ max-[600px]:top-20
               />
             </Link> */}
 
-           
-           
-           
-            <Link 
-            onClick={sendEmail}
-            className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
-            {loading ? (
+            <Link
+              onClick={sendEmail}
+              className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black"
+            >
+              {loading ? (
                 <div className=" flex justify-center items-center  ">
-                  <img src={spinner} alt="" srcset=""  className="w-10"/>
+                  <img src={spinner} alt="" srcset="" className="w-10" />
                 </div>
               ) : (
-                <p>Withdrawal
-
-                </p>
+                <p>Withdrawal</p>
               )}
               <img
                 src={arrow}
@@ -344,14 +334,13 @@ max-[600px]:top-20
               max-[600px]:w-20 max-[600px]:text-xs  focus:outline-none uppercase
               "
               >
-                  {loading ? (
-                <div className=" flex justify-center items-center  ">
-                  <img src={spinner} alt="" srcset=""  className="w-10"/>
-                </div>
-              ) : (
-                <p>Withdrawal</p>
-              )}
-                
+                {loading ? (
+                  <div className=" flex justify-center items-center  ">
+                    <img src={spinner} alt="" srcset="" className="w-10" />
+                  </div>
+                ) : (
+                  <p>Withdrawal</p>
+                )}
               </button>
             </div>
             <div className="flex  justify-between mt-8 max-[600px]:hidden">
@@ -370,7 +359,7 @@ max-[600px]:top-20
                 <img src={invested} alt="" />
                 <p className="ml-4">INVESTED: </p>
                 <p className="ml-4 text-blue-800 font-bold text-xl">
-                  $ {user.userInvested}
+                  $ {user.userIsAccepted ? user.userInvested : 0.0}
                 </p>
               </div>
 
