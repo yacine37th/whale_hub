@@ -113,16 +113,31 @@ function UserAccount() {
           value={user?.userEmail}
           // value={"nstitouah@gmail.com"}
         />{" "}
-        <textarea
-          value={"Withraw Request"}
+
+        <input
+          value={user?.userUSDWallet}
           id="txtid"
-          name="message"
+          name="userUSDWallet"
           rows="4"
           cols="50"
           maxlength="200"
           placeholder="your message ..."
           className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
         />
+
+<input
+          value={user?.userBaridyMob}
+          id="txtid"
+          name="userBaridyMob"
+          rows="4"
+          cols="50"
+          maxlength="200"
+          placeholder="your message ..."
+          className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
+        />
+
+        {/* userBaridyMob
+ */}
         <input
           type="submit"
           value="SEND"
