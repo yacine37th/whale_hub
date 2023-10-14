@@ -237,6 +237,9 @@ max-[600px]:top-20
               />
             </Link> */}
 
+           
+           
+           
             <Link 
             onClick={sendEmail}
             className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black">
@@ -245,7 +248,9 @@ max-[600px]:top-20
                   <img src={spinner} alt="" srcset=""  className="w-10"/>
                 </div>
               ) : (
-                <p>Withdrawal</p>
+                <p>Withdrawal
+
+                </p>
               )}
               <img
                 src={arrow}
