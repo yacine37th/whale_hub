@@ -9,6 +9,7 @@ import NavBarAuth from "./NavBarAuth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import spinner from "../assets/images/output-onlinegiftools.gif";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 function Login() {
@@ -136,8 +137,17 @@ function Login() {
                   "
                 >
                   {loading ? (
-                <div className=" flex justify-center items-center  ">
-                  <img src={spinner} alt="" srcset=""  className="w-14"/>
+                // <div className=" flex justify-center items-center  ">
+                //   <img src={spinner} alt="" srcset=""  className="w-14"/>
+                // </div>
+                <div
+                // className="flex justify-center items-center   h-screen p-0
+                // "
+                >
+                  {/* <div class=" flex justify-center items-center">
+                    <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
+                  </div> */}
+                  <LoadingSpinner width={"w-5"} height={"h-5"} text={"Loading ..."} />
                 </div>
               ) : (
                 <p>ENTER</p>

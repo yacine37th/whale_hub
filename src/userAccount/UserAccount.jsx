@@ -343,10 +343,11 @@ max-[600px]:top-20
                 )}
               </button>
             </div>
-            <div className="flex  justify-between mt-8
+            <div
+              className="flex  justify-between mt-8
             max-[600px]:justify-center      max-[600px]:items-center  max-[600px]:flex-col
-            ">
-
+            "
+            >
               <div
                 className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
               max-[600px]:px-2 max-[600px]:mb-4
@@ -361,11 +362,13 @@ max-[600px]:top-20
                 </p>
               </div>
 
-              <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
+              <div
+                className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
                max-[600px]:px-2 max-[600px]:mb-4 
               max-[600px]:py-2
               max-[600px]:w-10/12 
-              ">
+              "
+              >
                 <img src={invested} alt="" />
                 <p className="ml-4 max-[600px]:text-xs">INVESTED: </p>
                 <p className="ml-4 text-blue-800 font-bold text-xl        max-[600px]:text-xs">
@@ -373,10 +376,12 @@ max-[600px]:top-20
                 </p>
               </div>
 
-              <div className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4 
+              <div
+                className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4 
               max-[600px]:py-2
               max-[600px]:w-10/12 max-[600px]:mb-0
-              " >
+              "
+              >
                 <img src={withdrawl} alt="" />
                 <p className="ml-4  max-[600px]:text-xs">WITHDREW: </p>
                 <p className="ml-4 text-blue-800 font-bold text-xl  max-[600px]:text-xs">
@@ -384,7 +389,10 @@ max-[600px]:top-20
                 </p>
               </div>
             </div>
-            <table id="customers" className="mt-14 max-[600px]:text-xs max-[600px]:mt-4">
+            <table
+              id="customers"
+              className="mt-14 max-[600px]:text-xs max-[600px]:mt-4"
+            >
               <tr>
                 <td>User </td>
                 <td>{user.userFullName}</td>
