@@ -20,7 +20,7 @@ function LoadingSpinner({ width, height , text }) {
           fill="currentFill"
         />
       </svg>
-      <span className="text-gray-400">{text}</span>
+      <span className="text-white animate-pulse">{text}</span>
     </div>
   );
 }
