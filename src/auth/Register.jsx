@@ -79,7 +79,7 @@ function Register() {
                 userRegistrationDate: datetime,
                 userLastAccess: datetime,
                 userAccountBalance: 0.0,
-                userEarnedTotal: 0.0,
+                userEarnedTotal: [0],
                 userPendingWithdrawal: 0.0,
                 userWithdrawalTotal: 0.0,
                 userActiveDeposit: 0.0,

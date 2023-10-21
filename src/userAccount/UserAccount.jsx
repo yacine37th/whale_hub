@@ -22,14 +22,20 @@ function UserAccount() {
   const withdraw = useRef();
 
   const navigate = useNavigate();
-
+  const [total, settotal] = useState(0);
   const getUser = async (docID) => {
     const docRef = doc(db, "users", `${docID}`);
     const docSnap = await getDoc(docRef);
-
+    var to = 0;
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
       setuser(docSnap.data());
+      docSnap.data().userEarnedTotal.forEach((item) => {
+        to += item;
+      });
+      console.log(to);
+      settotal(to);
+      console.log(total);
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
@@ -97,7 +103,7 @@ function UserAccount() {
           type="text"
           name="user_name"
           className="border border-black p-4 m-2 focus:outline-none
-                 max-[600px]:p-1      max-[600px]:w-56   w-full
+                 max-md:p-1      max-md:w-56   w-full
                 "
           placeholder="Full Name"
           value={user?.userFullName}
@@ -105,7 +111,7 @@ function UserAccount() {
         <input
           type="email"
           name="user_email"
-          className="border border-black p-4 m-2 focus:outline-none      w-full          max-[600px]:p-1      max-[600px]:w-56   "
+          className="border border-black p-4 m-2 focus:outline-none      w-full          max-md:p-1      max-md:w-56   "
           placeholder="Email"
           value={user?.userEmail}
           // value={"nstitouah@gmail.com"}
@@ -118,7 +124,7 @@ function UserAccount() {
           cols="50"
           maxlength="200"
           placeholder="your message ..."
-          className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
+          className="border border-black p-4 m-2 focus:outline-none     w-full        max-md:p-1      max-md:w-56   "
         />
         <input
           value={user?.userBaridyMob}
@@ -128,7 +134,7 @@ function UserAccount() {
           cols="50"
           maxlength="200"
           placeholder="your message ..."
-          className="border border-black p-4 m-2 focus:outline-none     w-full        max-[600px]:p-1      max-[600px]:w-56   "
+          className="border border-black p-4 m-2 focus:outline-none     w-full        max-md:p-1      max-md:w-56   "
         />
         {/* userBaridyMob
          */}
@@ -143,50 +149,50 @@ function UserAccount() {
         <NavBarAuth />
         <div
           className="absolute top-24 left-32 
-        max-[600px]:left-0 
-        max-[600px]:hidden
+        max-md:left-0 
+        max-md:hidden
         "
         >
           <Link
             to={"/aboutus"}
             className="p-10 text-black uppercase duration-300
-            max-[600px]:p-1 
+            max-md:p-1 
             "
           >
             About US
           </Link>
           <Link
             to={"/plans"}
-            className="p-10 text-black uppercase duration-300   max-[600px]:p-1"
+            className="p-10 text-black uppercase duration-300   max-md:p-1"
           >
             INVESTMENT PLANS
           </Link>
 
-          <Link className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          <Link className="p-10 text-black uppercase duration-300   max-md:p-1">
             rate US
           </Link>
           <Link
             to={"/support"}
-            className="p-10 text-black uppercase duration-300   max-[600px]:p-1"
+            className="p-10 text-black uppercase duration-300   max-md:p-1"
           >
             support
           </Link>
-          <Link className="p-10 text-black uppercase duration-300   max-[600px]:p-1">
+          <Link className="p-10 text-black uppercase duration-300   max-md:p-1">
             faq
           </Link>
         </div>
 
         <div
-          className=" user flex jus w-screen absolute left-0 top-44 bg-gray-100  max-[600px]:pt-6
-max-[600px]:top-20
+          className=" user flex jus w-screen absolute left-0 top-44 bg-gray-100  max-md:pt-6
+max-md:top-20
         "
         >
           <div
-            className="flex flex-col bg-white  m-8 h-64 rounded-lg p-4 max-[600px]:p-2  max-[600px]:m-0
+            className="flex flex-col bg-white  m-8 h-64 rounded-lg p-4 max-md:p-2  max-md:m-0
           "
           >
             <Link
-              className="max-[600px]:text-xs max-[600px]:pt-4 max-[600px]:lowercase
+              className="max-md:text-xs max-md:pt-4 max-md:lowercase
             flex items-center justify-between      group     text-black
             "
             >
@@ -201,7 +207,7 @@ max-[600px]:top-20
             </Link>
             <Link
               to={"/profilSettings"}
-              className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black"
+              className="max-md:text-xs mt-2 uppercase max-md:lowercase    group          flex items-center justify-between           text-black"
             >
               <p>USER SETTINGS</p>
               <img
@@ -215,11 +221,11 @@ max-[600px]:top-20
             <a
               href="https://api.whatsapp.com/send?phone=+213674226441"
               target="_blank"
-              className="max-[600px]:text-xs max-[600px]:pt-4 max-[600px]:lowercase
+              className="max-md:text-xs max-md:pt-4 max-md:lowercase
              flex items-center justify-between      group   mt-2  text-black"
             >
               {/* <button
-                className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group       
+                className="max-md:text-xs mt-2 max-md:lowercase   group       
                 border-none bg-transparent  focus:outline-none
                 flex items-center justify-between           text-black"
               > */}
@@ -236,7 +242,7 @@ max-[600px]:top-20
             {/* <Link 
             to={`/deposit`}
             state={{ from: test }}
-            className="max-[600px]:text-xs mt-2 max-[600px]:lowercase   group             flex items-center justify-between           text-black">
+            className="max-md:text-xs mt-2 max-md:lowercase   group             flex items-center justify-between           text-black">
               <p>MAKE DEPOSIT</p>
               <img
                 src={arrow}
@@ -248,7 +254,7 @@ max-[600px]:top-20
 
             <Link
               onClick={sendEmail}
-              className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase    group          flex items-center justify-between           text-black"
+              className="max-md:text-xs mt-2 uppercase max-md:lowercase    group          flex items-center justify-between           text-black"
             >
               {loading ? (
                 <div className=" flex justify-center items-center  ">
@@ -264,7 +270,7 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
-            <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase      group       flex items-center justify-between           text-black">
+            <Link className="max-md:text-xs mt-2 uppercase max-md:lowercase      group       flex items-center justify-between           text-black">
               <p>user deposit</p>
               <img
                 src={arrow}
@@ -273,7 +279,7 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
-            <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase   group flex items-center justify-between           text-black">
+            <Link className="max-md:text-xs mt-2 uppercase max-md:lowercase   group flex items-center justify-between           text-black">
               <p> transactions </p>
 
               <img
@@ -283,7 +289,7 @@ max-[600px]:top-20
                 className="group-hover:scale-150 group-hover:mr-2 duration-300"
               />
             </Link>
-            <Link className="max-[600px]:text-xs mt-2 uppercase max-[600px]:lowercase  group  flex items-center justify-between           text-black">
+            <Link className="max-md:text-xs mt-2 uppercase max-md:lowercase  group  flex items-center justify-between           text-black">
               <p>deposit history</p>
               <img
                 src={arrow}
@@ -295,8 +301,8 @@ max-[600px]:top-20
           </div>
 
           <div
-            className=" bg-white max-[600px]:p-4  m-8 flex-1 p-2
-          max-[600px]:mt-0 rounded-lg
+            className=" bg-white max-md:p-4  m-8 flex-1 p-2
+          max-md:mt-0 rounded-lg
           "
           >
             <div>
@@ -310,7 +316,7 @@ max-[600px]:top-20
             </div>
             <div
               className="w-full flex  justify-between pt-4 
-            max-[600px]:hidden
+            max-md:hidden
             "
             >
               <a
@@ -320,7 +326,7 @@ max-[600px]:top-20
                 <button
                   className=" w-44  p-2 backGround  border-white   text-white  text-base
                hover:border-white rounded-2xl
-              max-[600px]:text-xs  max-[600px]:p-0    max-[600px]:w-28 focus:outline-none
+              max-md:text-xs  max-md:p-0    max-md:w-28 focus:outline-none
                "
                 >
                   MAKE DEPOSIT
@@ -331,7 +337,7 @@ max-[600px]:top-20
                 onClick={sendEmail}
                 className="w-44   p-2 backGround  border-white   text-white  text-base
               rounded-2xl  hover:border-white
-              max-[600px]:w-20 max-[600px]:text-xs  focus:outline-none uppercase
+              max-md:w-20 max-md:text-xs  focus:outline-none uppercase
               "
               >
                 {loading ? (
@@ -345,53 +351,53 @@ max-[600px]:top-20
             </div>
             <div
               className="flex  justify-between mt-8
-            max-[600px]:justify-center      max-[600px]:items-center  max-[600px]:flex-col
+            max-md:justify-center      max-md:items-center  max-md:flex-col
             "
             >
               <div
                 className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
-              max-[600px]:px-2 max-[600px]:mb-4
-              max-[600px]:py-2
-              max-[600px]:w-10/12 
+              max-md:px-2 max-md:mb-4
+              max-md:py-2
+              max-md:w-10/12 
               "
               >
-                <img src={balance} alt="" />
-                <p className="ml-4  max-[600px]:text-xs">BALANCE: </p>
-                <p className="ml-4 text-blue-800 font-bold text-xl  max-[600px]:text-xs">
+                <img src={balance} alt=""  className="max-md:w-2"/>
+                <p className="ml-4  max-md:text-xs">BALANCE: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl  max-md:text-xs">
                   $ {user.userAccountBalance}
                 </p>
               </div>
 
               <div
                 className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4
-               max-[600px]:px-2 max-[600px]:mb-4 
-              max-[600px]:py-2
-              max-[600px]:w-10/12 
+               max-md:px-2 max-md:mb-4 
+              max-md:py-2
+              max-md:w-10/12 
               "
               >
-                <img src={invested} alt="" />
-                <p className="ml-4 max-[600px]:text-xs">INVESTED: </p>
-                <p className="ml-4 text-blue-800 font-bold text-xl        max-[600px]:text-xs">
-                  $ {user.userIsAccepted ? user.userInvested : 0.0}
+                <img src={invested} alt="" className="  max-md:w-2" />
+                <p className="ml-4  max-md:text-xs  max-md:ml-3  max-md:lowercase">INVESTED: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
+                  ${user.userIsAccepted ? user.userInvested : 0.0}
                 </p>
               </div>
 
               <div
                 className="flex justify-center items-center bg-gray-200 px-9  rounded-lg py-4 
-              max-[600px]:py-2
-              max-[600px]:w-10/12 max-[600px]:mb-0
+              max-md:py-2
+              max-md:w-10/12 max-md:mb-0
               "
               >
-                <img src={withdrawl} alt="" />
-                <p className="ml-4  max-[600px]:text-xs">WITHDREW: </p>
-                <p className="ml-4 text-blue-800 font-bold text-xl  max-[600px]:text-xs">
-                  $ {user.userWithdrawalTotal}
+                <img src={withdrawl} alt="" className="  max-md:w-2" />
+                <p className="ml-4  max-md:text-xs  max-md:ml-3  max-md:lowercase">WITHDREW: </p>
+                <p className="ml-4 text-blue-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
+                  ${user.userWithdrawalTotal}
                 </p>
               </div>
             </div>
             <table
               id="customers"
-              className="mt-14 max-[600px]:text-xs max-[600px]:mt-4"
+              className="mt-14 max-md:text-xs max-md:mt-4"
             >
               <tr>
                 <td>User </td>
@@ -411,7 +417,7 @@ max-[600px]:top-20
               </tr>
               <tr>
                 <td>Earned Total </td>
-                <td> {user.userEarnedTotal} </td>
+                <td>{total}</td>
               </tr>
               <tr>
                 <td> Pending Withdrawal </td>
