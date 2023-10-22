@@ -35,10 +35,10 @@ function Register() {
   const [amountInvest, setamountInvest] = useState(0);
   const [loading, setloading] = useState(false);
 
-  const [gender, setgender] = useState();
+  const [Pack, setPack] = useState();
 
-  const handlegender = (e) => {
-    setgender(e.target.value);
+  const handlePack = (e) => {
+    setPack(e.target.value);
   };
 
   const register = async (
@@ -51,7 +51,7 @@ function Register() {
     usdt,
     Baridymob
   ) => {
-    if (em === "" || pa === "") {
+    if (em === "" || pa === "" || Pack==="") {
       alert("Please Enter Email and Password");
     } else {
       try {
@@ -91,6 +91,7 @@ function Register() {
                 userWithdrawalTotal: 0.0,
                 userActiveDeposit: 0.0,
                 userInvested: amountInvest,
+                userPack : Pack,
               });
               //      const docRef =  addDoc( user.uid, collection(db, "users"), {
               //   email : email,
@@ -113,6 +114,7 @@ function Register() {
             }
           });
       } catch (error) {
+        console.log(error.message);
       } finally {
         setloading(false);
       }
@@ -389,45 +391,45 @@ function Register() {
               <p className="text-red-700 text-xs flex items-start"></p>
             </div>
 
-            <div className="flex flex-col px-10 my-5">
+            <div className="flex flex-col  my-5">
               <p className="text-2xl">PLEASE SELECT THE PACK</p>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3  mt-4" >
                 <input
                   id="normal_pack"
                   type="radio"
                   name="normal"
                   value="normal_pack"
-                  onChange={handlegender}
+                  onChange={handlePack}
                 />
-                <label htmlFor="normal_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer">
+                <label htmlFor="normal_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
                   NORMAL PACK
                 </label>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 ">
                 <input
                   id="golden_pack"
                   type="radio"
                   name="normal"
                   value="golden_pack"
-                  onChange={handlegender}
+                  onChange={handlePack}
                 />
-                <label htmlFor="golden_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer">
+                <label htmlFor="golden_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
                   GOLDEN PACK
                 </label>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 ">
                 <input
                   className="checked:bg-blue-900 p-3 bg-red-700"
                   id="diamand_pack"
                   type="radio"
                   name="normal"
                   value="diamand_pack"
-                  onChange={handlegender}
+                  onChange={handlePack}
                 />
-                <label htmlFor="diamand_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer">
+                <label htmlFor="diamand_pack"  className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
                   DIAMAND PACK
                 </label>
               </div>
