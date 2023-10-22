@@ -399,7 +399,7 @@ function Register() {
                   id="normal_pack"
                   type="radio"
                   name="normal"
-                  value="normal_pack"
+                  value="NORMAL PACK"
                   onChange={handlePack}
                 />
                 <label htmlFor="normal_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
@@ -412,7 +412,7 @@ function Register() {
                   id="golden_pack"
                   type="radio"
                   name="normal"
-                  value="golden_pack"
+                  value="GOLDEN PACK"
                   onChange={handlePack}
                 />
                 <label htmlFor="golden_pack" className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
@@ -426,11 +426,11 @@ function Register() {
                   id="diamand_pack"
                   type="radio"
                   name="normal"
-                  value="diamand_pack"
+                  value="DIAMOND PACK"
                   onChange={handlePack}
                 />
                 <label htmlFor="diamand_pack"  className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
-                  DIAMAND PACK
+                DIAMOND PACK
                 </label>
               </div>
               {/* <input
@@ -473,20 +473,17 @@ function Register() {
             </div> */}
             <button
               onClick={() => {
-                console.log(gender);
+                register(
+                  auth,
+                  email,
+                  password,
+                  fullName,
+                  username,
+                  betcoinAccount,
+                  usdt,
+                  Baridymob
+                );
               }}
-              // onClick={() => {
-              //   register(
-              //     auth,
-              //     email,
-              //     password,
-              //     fullName,
-              //     username,
-              //     betcoinAccount,
-              //     usdt,
-              //     Baridymob
-              //   );
-              // }}
               type="submit"
               className="
                   w-full p-4 button-background-register border-white   text-white  text-base
