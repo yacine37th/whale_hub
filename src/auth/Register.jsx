@@ -35,7 +35,7 @@ function Register() {
   const [amountInvest, setamountInvest] = useState(0);
   const [loading, setloading] = useState(false);
 
-  const [Pack, setPack] = useState();
+  const [Pack, setPack] = useState("");
 
   const handlePack = (e) => {
     setPack(e.target.value);
@@ -90,7 +90,7 @@ function Register() {
                 userPendingWithdrawal: 0.0,
                 userWithdrawalTotal: 0.0,
                 userActiveDeposit: 0.0,
-                userInvested: amountInvest,
+                userInvested: Number(amountInvest),
                 userPack : Pack,
               });
               //      const docRef =  addDoc( user.uid, collection(db, "users"), {
@@ -111,6 +111,10 @@ function Register() {
             console.log(error.code);
             if (error.code === "auth/email-already-in-use") {
               alert("This Email is already in use");
+            }
+            else if (error.code ==="auth/weak-password"){
+              alert("Enter a valid password");
+
             }
           });
       } catch (error) {
@@ -427,7 +431,7 @@ function Register() {
                   id="diamand_pack"
                   type="radio"
                   name="normal"
-                  value="DIAMOND PACK"
+                  value="DIAMAND PACK"
                   onChange={handlePack}
                 />
                 <label htmlFor="diamand_pack"  className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-xl">
