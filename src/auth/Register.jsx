@@ -421,6 +421,7 @@ function Register() {
               </div>
 
               <div className="flex gap-3 ">
+                
                 <input
                   className="checked:bg-blue-900 p-3 bg-red-700"
                   id="diamand_pack"
