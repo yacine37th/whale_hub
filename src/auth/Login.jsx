@@ -11,7 +11,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import spinner from "../assets/images/output-onlinegiftools.gif";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-
 function Login() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -22,57 +21,58 @@ function Login() {
     if (em === "" || pa === "") {
       alert("Please Enter Email and Password");
     } else {
-    try {
-      setloading(true);
+      try {
+        setloading(true);
 
-      const res = await signInWithEmailAndPassword(au, em, pa)
-      .then((userCredential) => {
-        var currentdate = new Date();
-        var datetime =
-          +currentdate.getDate() +
-          "/" +
-          (currentdate.getMonth() + 1) +
-          "/" +
-          currentdate.getFullYear() +
-          " " +
-          currentdate.getHours() +
-          ":" +
-          currentdate.getMinutes() +
-          ":" +
-          currentdate.getSeconds();
-        console.log("datetime");
-        console.log(datetime);
+        const res = await signInWithEmailAndPassword(au, em, pa)
+          .then((userCredential) => {
+            var currentdate = new Date();
+            var datetime =
+              +currentdate.getDate() +
+              "/" +
+              (currentdate.getMonth() + 1) +
+              "/" +
+              currentdate.getFullYear() +
+              " " +
+              currentdate.getHours() +
+              ":" +
+              currentdate.getMinutes() +
+              ":" +
+              currentdate.getSeconds();
+            console.log("datetime");
+            console.log(datetime);
 
-        // Signed in
-        const user = userCredential.user;
-        // ...
-        // console.log(user.uid);
-        updateDoc(doc(db, "users", user.uid), {
-          userLastAccess: datetime,
-        });
-        alert("Login Success");
-        navigate("/profil", {replace : true});
-        console.log("deded");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error.code);
-        //
-        console.log("test");
-        if (error.code === "auth/invalid-email") {
-          alert("Please enter Valid Email");
-        }
-        if (error.code === "auth/wrong-password") {
-          alert("Your Password is wrong ");
-        }
-      });
-    } catch (error) {
-      
-    }finally{
-      setloading(false);
-
-    }
+            // Signed in
+            const user = userCredential.user;
+            // ...
+            // console.log(user.uid);
+            updateDoc(doc(db, "users", user.uid), {
+              userLastAccess: datetime,
+            });
+            alert("Login Success");
+            navigate("/profil", { replace: true });
+            console.log("deded");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(error.code);
+            //
+            console.log("test");
+            if (error.code === "auth/invalid-email") {
+              alert("Please enter Valid Email");
+            }
+            if (error.code === "auth/wrong-password") {
+              alert("Your Password is wrong ");
+            }
+            if (error.code === "auth/user-not-found") {
+              alert("This account don't exist ,Pleas create New Account");
+            }
+          });
+      } catch (error) {
+      } finally {
+        setloading(false);
+      }
 
       //  navigate("/" , {replace : true})
     }
@@ -137,22 +137,25 @@ function Login() {
                   "
                 >
                   {loading ? (
-                // <div className=" flex justify-center items-center  ">
-                //   <img src={spinner} alt="" srcset=""  className="w-14"/>
-                // </div>
-                <div
-                // className="flex justify-center items-center   h-screen p-0
-                // "
-                >
-                  {/* <div class=" flex justify-center items-center">
+                    // <div className=" flex justify-center items-center  ">
+                    //   <img src={spinner} alt="" srcset=""  className="w-14"/>
+                    // </div>
+                    <div
+                    // className="flex justify-center items-center   h-screen p-0
+                    // "
+                    >
+                      {/* <div class=" flex justify-center items-center">
                     <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
                   </div> */}
-                  <LoadingSpinner width={"w-5"} height={"h-5"} text={"Loading ..."} />
-                </div>
-              ) : (
-                <p>ENTER</p>
-              )}
-             
+                      <LoadingSpinner
+                        width={"w-5"}
+                        height={"h-5"}
+                        text={"Loading ..."}
+                      />
+                    </div>
+                  ) : (
+                    <p>ENTER</p>
+                  )}
                 </button>
               </div>
               <div className="flex  px-8 w-full mb-5 cursor-pointer justify-end">
