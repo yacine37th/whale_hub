@@ -23,19 +23,25 @@ function UserAccount() {
 
   const navigate = useNavigate();
   const [total, settotal] = useState(0);
+  const [userInvested, setuserInvested] = useState(0);
   const getUser = async (docID) => {
     const docRef = doc(db, "users", `${docID}`);
     const docSnap = await getDoc(docRef);
-    var to = 0;
+    var userEarnedTotal = 0;
+    var userInvested2 = 0;
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
       setuser(docSnap.data());
       docSnap.data().userEarnedTotal.forEach((item) => {
-        to += item;
+        userEarnedTotal += item;
       });
-      console.log(to);
-      settotal(to);
-      console.log(total);
+      docSnap.data().userInvested.forEach((item) => {
+        userInvested2 += item;
+      });
+      // console.log(userEarnedTotal);
+      setuserInvested(userInvested2)
+      settotal(userEarnedTotal);
+      // console.log(total);
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
@@ -378,7 +384,7 @@ max-md:top-20
                 <img src={invested} alt="" className="  max-md:w-2" />
                 <p className="ml-4  max-md:text-xs  max-md:ml-3  max-md:lowercase">INVESTED: </p>
                 <p className="ml-4 text-blue-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
-                  ${user.userIsAccepted ? user.userInvested : 0.0}
+                  ${user.userIsAccepted ? userInvested: 0.0}
                 </p>
               </div>
 

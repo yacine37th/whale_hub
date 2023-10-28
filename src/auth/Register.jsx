@@ -90,7 +90,7 @@ function Register() {
                 userPendingWithdrawal: 0.0,
                 userWithdrawalTotal: 0.0,
                 userActiveDeposit: 0.0,
-                userInvested: Number(amountInvest),
+                userInvested: [Number(amountInvest)],
                 userPack : Pack,
               });
               //      const docRef =  addDoc( user.uid, collection(db, "users"), {
