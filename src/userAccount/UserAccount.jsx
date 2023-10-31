@@ -81,10 +81,14 @@ function UserAccount() {
       setloading(true);
       emailjs
         .sendForm(
-          "service_4pho89o",
-          "template_ebk0dtp",
+          // "service_4pho89o",
+          `${import.meta.env.VITE_EMAILJS_SERVICEID}`,
+          `${import.meta.env.VITE_EMAILJS_TEMPLATEID}`,
+          // "template_ebk0dtp",
           withdraw.current,
-          "vi6_bsb5AMeM-KTqK"
+          // VITE_EMAILJS_ID
+          `${import.meta.env.VITE_EMAILJS_ID}`,
+          // "vi6_bsb5AMeM-KTqK"
         )
         .then(
           (result) => {
