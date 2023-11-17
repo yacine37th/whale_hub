@@ -87,7 +87,7 @@ function UserAccount() {
           // "template_ebk0dtp",
           withdraw.current,
           // VITE_EMAILJS_ID
-          `${import.meta.env.VITE_EMAILJS_ID}`,
+          `${import.meta.env.VITE_EMAILJS_ID}`
           // "vi6_bsb5AMeM-KTqK"
         )
         .then(
@@ -412,8 +412,9 @@ max-md:top-20
                   <p className="ml-4  max-md:text-xs  max-md:ml-3  max-md:lowercase">
                     WITHDREW:{" "}
                   </p>
-                  <p className="ml-4 text-blue-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
-                    ${user.userWithdrawalTotal}
+                  <p className="ml-4 text-red-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
+                    $ {total < 0 ? total : 0}
+                    {/* {user.userWithdrawalTotal} */}
                   </p>
                 </div>
               </div>
