@@ -123,7 +123,7 @@ function AboutUS() {
             <div className="flex flex-col">
               <p className="m-2 mx-10">
                 {" "}
-                - $50 to $999: Investor 65%, Company 35%
+                - $100 to $999: Investor 65%, Company 35%
               </p>
               <p className="m-2 mx-10">
                 {" "}

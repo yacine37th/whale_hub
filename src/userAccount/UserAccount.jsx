@@ -24,25 +24,36 @@ function UserAccount() {
 
   const navigate = useNavigate();
   const [total, settotal] = useState(0);
+  const [withdrawTotal, setwithdrawTotal] = useState(0);
   const [userInvested, setuserInvested] = useState(0);
+
   const getUser = async (docID) => {
     setloading(true);
     const docRef = doc(db, "users", `${docID}`);
     const docSnap = await getDoc(docRef);
     var userEarnedTotal = 0;
     var userInvested2 = 0;
+    var userInvested3 = 0;
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      // console.log("Document data:", docSnap.data());
       setuser(docSnap.data());
       docSnap.data().userEarnedTotal.forEach((item) => {
-        userEarnedTotal += item;
+        if (item > 0){
+          userEarnedTotal += item;
+        }
       });
       docSnap.data().userInvested.forEach((item) => {
-        userInvested2 += item;
+        if(item > 0 ){
+          userInvested2 += item;
+        }else if(item <= 0){
+          userInvested3 += item;
+        }
+   
       });
       // console.log(userEarnedTotal);
       setuserInvested(userInvested2.toFixed(2));
       settotal(userEarnedTotal);
+      setwithdrawTotal(userInvested3)
       setloading(false);
       // console.log(total);
     } else {
@@ -413,7 +424,7 @@ max-md:top-20
                     WITHDREW:{" "}
                   </p>
                   <p className="ml-4 text-red-800 font-bold text-xl  max-md:text-xs max-md:ml-1">
-                    $ {total < 0 ? total : 0}
+                    $ {withdrawTotal}
                     {/* {user.userWithdrawalTotal} */}
                   </p>
                 </div>
@@ -447,8 +458,8 @@ max-md:top-20
                   <td> {user.userPendingWithdrawal}</td>
                 </tr>
                 <tr>
-                  <td>Withdrawal Total </td>
-                  <td> {user.userWithdrawalTotal} </td>
+                  <td>Withdraw Total </td>
+                  <td> {withdrawTotal} </td>
                 </tr>
                 <tr>
                   <td> Active Deposit </td>
